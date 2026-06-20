@@ -1,0 +1,146 @@
+
+.card {
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  grid-column: span 2;
+  grid-row: span 2;
+
+  &.size-feature {
+    grid-column: span 4;
+    grid-row: span 4;
+  }
+
+  &.size-tall {
+    grid-column: span 2;
+    grid-row: span 4;
+  }
+
+  &.size-wide {
+    grid-column: span 4;
+    grid-row: span 2;
+  }
+
+  &.size-small {
+    grid-column: span 2;
+    grid-row: span 2;
+  }
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.7);
+    transition: filter 0.5s, transform 0.7s;
+    display: block;
+  }
+
+  &:hover img {
+    filter: brightness(0.55);
+    transform: scale(1.05);
+  }
+
+  &:hover .cta {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  @media (max-width: 1000px) {
+    &.size-feature {
+      grid-column: span 2;
+      grid-row: span 3;
+    }
+    &.size-tall {
+      grid-column: span 1;
+      grid-row: span 3;
+    }
+    &.size-wide {
+      grid-column: span 2;
+      grid-row: span 2;
+    }
+    &.size-small {
+      grid-column: span 1;
+      grid-row: span 2;
+    }
+  }
+
+  @media (max-width: 700px) {
+    &, &.size-feature, &.size-tall, &.size-wide, &.size-small {
+      grid-column: span 1;
+      grid-row: span 1;
+    }
+  }
+}
+
+.livePill {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 5px 10px;
+  background: rgba(10, 10, 10, 0.8);
+  border: 1px solid rgba(196, 168, 130, 0.4);
+  color: var(--gold);
+  z-index: 2;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, transparent 65%);
+
+  &.size-feature,
+  &.size-wide {
+    padding: 32px;
+  }
+}
+
+.name {
+  font-size: 18px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--white);
+  margin-bottom: 5px;
+
+  .size-feature & {
+    font-size: 28px;
+  }
+
+  .size-wide & {
+    font-size: 22px;
+  }
+}
+
+.tagline {
+  font-size: 11.5px;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.6);
+  line-height: 1.5;
+
+  .size-feature &,
+  .size-wide & {
+    font-size: 13px;
+  }
+}
+
+.cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 12px;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--white);
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 0.3s, transform 0.3s;
+}

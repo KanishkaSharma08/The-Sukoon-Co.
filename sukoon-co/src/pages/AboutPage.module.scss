@@ -1,0 +1,367 @@
+
+.subpagePad {
+  // Page container styles
+}
+
+.section {
+  padding: 100px 60px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+
+  @media (max-width: 768px) {
+    padding: 60px 24px;
+  }
+}
+
+// ETYMOLOGY
+.etymology {
+  padding: 100px 60px;
+  text-align: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+
+  @media (max-width: 768px) {
+    padding: 60px 24px;
+  }
+}
+
+.etyWord {
+  font-size: clamp(60px, 9vw, 140px);
+  font-weight: 300;
+  font-style: italic;
+  font-family: 'Noto Serif', serif;
+  line-height: 1;
+  margin-bottom: 24px;
+}
+
+.etySub {
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 0.15em;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 48px;
+}
+
+.etyBody {
+  font-size: 19px;
+  font-weight: 300;
+  font-style: italic;
+  line-height: 1.85;
+  color: rgba(255, 255, 255, 0.65);
+  max-width: 780px;
+  margin: 0 auto;
+}
+
+// FOUNDERS
+.founders {
+  padding: 110px 60px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+
+  @media (max-width: 768px) {
+    padding: 60px 24px;
+  }
+}
+
+.foundersIntro {
+  text-align: center;
+  max-width: 640px;
+  margin: 0 auto 80px;
+}
+
+.founderBlock {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 64px;
+  padding: 60px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  align-items: start;
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+}
+
+.founderPortrait {
+  width: 280px;
+  height: 280px;
+  background: var(--mid);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 72px;
+  font-weight: 800;
+  color: rgba(196, 168, 130, 0.25);
+  letter-spacing: -0.04em;
+
+  @media (max-width: 768px) {
+    width: 160px;
+    height: 160px;
+    font-size: 48px;
+  }
+}
+
+.founderName {
+  font-size: 32px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin-bottom: 8px;
+}
+
+.founderRole {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 28px;
+}
+
+.founderBio {
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 1.9;
+  color: rgba(255, 255, 255, 0.55);
+
+  p {
+    margin-bottom: 20px;
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  em {
+    font-style: italic;
+    color: rgba(255, 255, 255, 0.85);
+  }
+}
+
+// PHILOSOPHY
+.philosophy {
+  padding: 110px 60px;
+  background: var(--off);
+  color: var(--black);
+
+  @media (max-width: 768px) {
+    padding: 60px 24px;
+  }
+
+  :global(.sec-label) {
+    color: #8a7355;
+  }
+}
+
+.philGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: start;
+  margin-top: 48px;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+}
+
+.philList {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.philItem {
+  padding: 32px 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+.philItemTitle {
+  font-size: 19px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  margin-bottom: 10px;
+  color: var(--black);
+}
+
+.philItemBody {
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 1.8;
+  color: rgba(0, 0, 0, 0.55);
+}
+
+// VISUAL IDENTITY
+.identity {
+  padding: 110px 60px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+
+  @media (max-width: 768px) {
+    padding: 60px 24px;
+  }
+}
+
+.identityColors {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 2px;
+  margin-top: 48px;
+
+  @media (max-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 4px;
+  }
+}
+
+.colorSwatch {
+  aspect-ratio: 1;
+  display: flex;
+  align-items: flex-end;
+  padding: 20px;
+  position: relative;
+}
+
+.colorSwatchName {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+
+  &.dark {
+    color: #0A0A0A;
+  }
+
+  &.light {
+    color: #FFFFFF;
+  }
+}
+
+.colorInk {
+  background: #0A0A0A;
+}
+
+.colorSand {
+  background: #D4B483;
+}
+
+.colorSage {
+  background: #8B9D7A;
+}
+
+.colorRose {
+  background: #C77B6B;
+}
+
+.colorBrass {
+  background: #A98344;
+}
+
+// TAGLINE BLOCK
+.taglineBlock {
+  padding: 140px 60px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+
+  @media (max-width: 768px) {
+    padding: 80px 24px;
+  }
+}
+
+.taglineText {
+  font-size: clamp(36px, 5vw, 76px);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+
+  em {
+    font-style: italic;
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.4);
+  }
+}
+
+// CTA
+.ctaSection {
+  padding: 110px 60px;
+  text-align: center;
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+
+  @media (max-width: 768px) {
+    padding: 80px 24px;
+  }
+}
+
+.ctaH {
+  font-size: clamp(32px, 4.5vw, 60px);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+  margin-bottom: 28px;
+}
+
+.ctaSub {
+  font-size: 15px;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.45);
+  max-width: 440px;
+  margin: 0 auto 40px;
+  line-height: 1.8;
+}
+
+.btnGroup {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  justify-content: center;
+
+  @media (max-width: 480px) {
+    flex-direction: column;
+    gap: 10px;
+  }
+}
+
+.btnP {
+  font-family: var(--font);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--black);
+  background: var(--white);
+  border: none;
+  padding: 18px 44px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.2s;
+
+  &:hover {
+    background: var(--gold);
+  }
+}
+
+.btnS {
+  font-family: var(--font);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--white);
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  padding: 17px 36px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: border-color 0.2s;
+
+  &:hover {
+    border-color: rgba(255, 255, 255, 0.7);
+  }
+}

@@ -1,0 +1,115 @@
+.hero {
+  position: relative;
+  height: 100vh;
+  min-height: 680px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 0 60px 88px;
+  overflow: hidden;
+
+  @media (max-width: $bp-mobile) {
+    padding: 0 24px 60px;
+  }
+}
+
+.bg {
+  position: absolute;
+  inset: 0;
+  background: url('https://images.unsplash.com/photo-1524492412937-b28074a5d7da?w=2000&q=85')
+    center / cover no-repeat;
+  filter: brightness(0.35);
+  transform: scale(1.06);
+  transition: transform 9s ease;
+
+  &.loaded {
+    transform: scale(1);
+  }
+}
+
+.eyebrow {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 20px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+
+  &::before {
+    content: '';
+    width: 28px;
+    height: 1px;
+    background: var(--gold);
+  }
+}
+
+.headline {
+  font-size: clamp(60px, 9vw, 124px);
+  font-weight: 800;
+  line-height: 0.92;
+  letter-spacing: -0.04em;
+  position: relative;
+
+  em {
+    font-style: italic;
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.5);
+  }
+}
+
+.bottom {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-top: 56px;
+}
+
+.desc {
+  font-size: 15px;
+  font-weight: 300;
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.55);
+  max-width: 380px;
+}
+
+.scrollIndicator {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  border: none;
+  background: none;
+
+  span {
+    font-size: 9px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.3);
+    writing-mode: vertical-rl;
+  }
+}
+
+.scrollLine {
+  width: 1px;
+  height: 56px;
+  background: rgba(255, 255, 255, 0.15);
+  position: relative;
+  overflow: hidden;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: -100%;
+    left: 0;
+    right: 0;
+    height: 50%;
+    background: var(--gold);
+    animation: scrollAnim 2s ease-in-out infinite;
+  }
+}

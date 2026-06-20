@@ -1,0 +1,330 @@
+.section {
+  padding: 80px 0;
+  text-align: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  overflow: hidden;
+
+  @media (max-width: $bp-mobile) {
+    padding: 56px 24px;
+  }
+}
+
+.label {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 14px;
+}
+
+.title {
+  font-size: clamp(32px, 4vw, 52px);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.06;
+  margin-bottom: 14px;
+}
+
+.sub {
+  font-size: 14px;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.38);
+  max-width: 400px;
+  margin: 0 auto 56px;
+  line-height: 1.8;
+}
+
+// Stage layout
+.stage {
+  display: grid;
+  grid-template-columns: 240px 700px 240px;
+  justify-content: center;
+  align-items: center;
+
+  @media (max-width: $bp-desktop) {
+    grid-template-columns: 220px 500px 220px;
+  }
+
+  @media (max-width: $bp-tablet) {
+    grid-template-columns: 200px 420px 200px;
+  }
+
+  @media (max-width: $bp-mobile) {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+}
+
+// Logo Map
+.logoMap {
+  position: relative;
+  width: 700px;
+  height: 700px;
+
+  @media (max-width: $bp-desktop) { width: 500px; height: 500px; }
+  @media (max-width: $bp-tablet) { width: 420px; height: 420px; }
+  @media (max-width: $bp-mobile) { width: 300px; height: 300px; margin: 0 auto; }
+}
+
+.logoSvgWrap {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.logoSvgGray {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: contain;
+  position: relative;
+  z-index: 1;
+  filter: grayscale(1) brightness(1.8) contrast(0.9);
+  transition: filter 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.logoColorOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  z-index: 2;
+  pointer-events: none;
+  opacity: 0;
+  clip-path: polygon(0 0, 0 0, 0 0);
+  transition: clip-path 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+    opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+// Zone-specific color reveals
+.logoMap {
+  &[class*='zone-mountains'] .logoColorOverlay {
+    clip-path: polygon(25.7% 8.3%, 49.2% 8.3%, 49.2% 32.5%, 25.7% 32.5%);
+    opacity: 1;
+  }
+  &[class*='zone-temples'] .logoColorOverlay {
+    clip-path: polygon(51.7% 8.3%, 77% 8.3%, 77% 32.5%, 51.7% 32.5%);
+    opacity: 1;
+  }
+  &[class*='zone-rajasthan'] .logoColorOverlay {
+    clip-path: polygon(25.7% 35.2%, 49.2% 35.2%, 49.2% 58.8%, 25.7% 58.8%);
+    opacity: 1;
+  }
+  &[class*='zone-safari'] .logoColorOverlay {
+    clip-path: polygon(51.7% 35.2%, 77% 35.2%, 77% 58.8%, 51.7% 58.8%);
+    opacity: 1;
+  }
+  &[class*='zone-goa'] .logoColorOverlay {
+    clip-path: polygon(25.7% 61.2%, 49.2% 61.2%, 49.2% 87.3%, 25.7% 87.3%);
+    opacity: 1;
+  }
+  &[class*='zone-kerala'] .logoColorOverlay {
+    clip-path: polygon(51.7% 61.2%, 77% 61.2%, 77% 87.3%, 51.7% 87.3%);
+    opacity: 1;
+  }
+}
+
+// Hit zones
+.lz {
+  position: absolute;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.lzMountains { top: 8.3%;  left: 25.7%; width: 23.5%; height: 24.2%; }
+.lzTemples   { top: 8.3%;  left: 51.7%; width: 25.3%; height: 24.2%; }
+.lzRajasthan { top: 35.2%; left: 25.7%; width: 23.5%; height: 23.6%; }
+.lzSafari    { top: 35.2%; left: 51.7%; width: 25.3%; height: 23.6%; }
+.lzGoa       { top: 61.2%; left: 25.7%; width: 23.5%; height: 26.1%; }
+.lzKerala    { top: 61.2%; left: 51.7%; width: 25.3%; height: 26.1%; }
+
+// Popup columns
+.popupCol {
+  position: relative;
+  height: 700px;
+
+  @media (max-width: $bp-desktop) { height: 500px; }
+  @media (max-width: $bp-tablet)  { height: 420px; }
+  @media (max-width: $bp-mobile)  { height: auto; gap: 16px; }
+}
+
+// Panel rows
+.lzPanel {
+  position: absolute;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  transform: translateY(-50%);
+
+  .popupLeft & {
+    flex-direction: row;
+    justify-content: flex-end;
+  }
+
+  .popupRight & {
+    flex-direction: row;
+    justify-content: flex-start;
+  }
+
+  @media (max-width: $bp-mobile) {
+    flex-direction: column !important;
+    align-items: flex-start;
+    position: static;
+    transform: none;
+  }
+}
+
+// Connector line
+.connectorLine {
+  height: 1px;
+  width: 0;
+  flex-shrink: 0;
+  transition: width 0.4s ease, background 0.4s ease, box-shadow 0.4s ease;
+
+  .active & {
+    width: 48px;
+    background: var(--gold);
+    box-shadow: 0 0 8px rgba(196, 168, 130, 0.4);
+  }
+
+  @media (max-width: $bp-mobile) { display: none; }
+}
+
+// Popup card
+.panelPopup {
+  border: 1px solid transparent;
+  padding: 28px 30px;
+  min-width: 240px;
+  opacity: 0;
+  background: transparent;
+  transition: opacity 0.35s ease, border-color 0.35s ease, background 0.35s ease,
+    transform 0.35s ease;
+  pointer-events: none;
+  text-align: left;
+
+  .popupLeft & {
+    text-align: right;
+    transform: translateX(12px);
+  }
+
+  .popupRight & {
+    transform: translateX(-12px);
+  }
+
+  .active & {
+    opacity: 1;
+    pointer-events: auto;
+    background: rgba(10, 10, 10, 0.97);
+    border-color: rgba(196, 168, 130, 0.3);
+    transform: translateX(0);
+  }
+
+  @media (max-width: $bp-mobile) {
+    opacity: 1;
+    pointer-events: auto;
+    background: rgba(255, 255, 255, 0.04);
+    border-color: rgba(196, 168, 130, 0.2);
+    transform: none !important;
+    min-width: 160px;
+    padding: 16px;
+  }
+}
+
+.popupTitle {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 16px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid rgba(196, 168, 130, 0.2);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  .popupLeft & {
+    flex-direction: row-reverse;
+  }
+}
+
+.popupIcon {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  opacity: 0.85;
+
+  svg {
+    width: 100%;
+    height: 100%;
+    stroke: var(--gold);
+    fill: none;
+    stroke-width: 1.6;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+}
+
+.popupItems {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.destTag {
+  font-size: 15px;
+  font-weight: 500;
+  padding: 9px 6px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: color 0.15s;
+  cursor: pointer;
+  color: var(--white);
+  background: none;
+  border: none;
+  width: 100%;
+  text-align: left;
+  font-family: var(--font);
+
+  .popupLeft & {
+    flex-direction: row-reverse;
+    justify-content: flex-start;
+  }
+
+  &.live:hover { color: var(--gold); }
+
+  &.live:hover .arr { opacity: 1; }
+
+  &.soon {
+    color: rgba(255, 255, 255, 0.22);
+    cursor: default;
+    font-size: 13px;
+    gap: 8px;
+  }
+}
+
+.arr {
+  font-size: 11px;
+  color: var(--gold);
+  opacity: 0;
+  transition: opacity 0.15s;
+  flex-shrink: 0;
+}
+
+.pill {
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(196, 168, 130, 0.5);
+  padding: 2px 6px;
+  border: 1px solid rgba(196, 168, 130, 0.2);
+  flex-shrink: 0;
+  white-space: nowrap;
+}

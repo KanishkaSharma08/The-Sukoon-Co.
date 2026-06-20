@@ -1,0 +1,31 @@
+.wrap {
+  background: var(--white);
+  color: var(--black);
+  padding: 16px 0;
+  overflow: hidden;
+  white-space: nowrap;
+
+  &.dark {
+    background: var(--black);
+    color: var(--white);
+  }
+}
+
+.track {
+  display: inline-flex;
+  animation: marquee 32s linear infinite;
+}
+
+.item {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  padding: 0 36px;
+}
+
+.sep {
+  color: var(--gold);
+  font-size: 14px;
+  vertical-align: middle;
+}

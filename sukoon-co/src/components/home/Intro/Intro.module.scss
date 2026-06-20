@@ -1,0 +1,90 @@
+.section {
+  padding: 90px 60px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 70px;
+  align-items: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+
+  @media (max-width: 900px) {
+    grid-template-columns: 1fr;
+    padding: 80px 24px;
+    gap: 40px;
+  }
+}
+
+.introLabel {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 24px;
+}
+
+.introH {
+  font-size: clamp(38px, 4.5vw, 64px);
+  font-weight: 800;
+  line-height: 1.04;
+  letter-spacing: -0.03em;
+  color: var(--white);
+
+  em {
+    font-style: italic;
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.4);
+  }
+}
+
+.sukoonWord {
+  font-size: clamp(52px, 7vw, 96px);
+  font-weight: 300;
+  letter-spacing: 0.02em;
+  display: block;
+  line-height: 1;
+  margin-bottom: 10px;
+  font-family: 'Noto Serif', serif;
+  font-style: italic;
+  transition: opacity 0.3s ease;
+}
+
+.sukoonLang {
+  font-size: 14px;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.45);
+  letter-spacing: 0.04em;
+  transition: opacity 0.3s ease;
+}
+
+.introBody {
+  font-size: 15px;
+  font-weight: 300;
+  line-height: 1.9;
+  color: rgba(255, 255, 255, 0.5);
+  margin-bottom: 48px;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  padding-top: 32px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.statN {
+  font-size: 48px;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  color: var(--white);
+}
+
+.statL {
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--lgrey);
+  margin-top: 6px;
+}
