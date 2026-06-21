@@ -5,11 +5,10 @@ import Marquee from '@/components/ui/Marquee/Marquee';
 import LogoMap from '@/components/home/LogoMap/LogoMap';
 import Itineraries from '@/components/home/Itineraries/Itineraries';
 import Experience from '@/components/home/Experience/Experience';
-import Approach from '@/components/home/Approach/Approach';
 import Testimonials from '@/components/home/Testimonials/Testimonials';
 import CtaSection from '@/components/home/CtaSection/CtaSection';
 import ItineraryModal from '@/components/home/ItineraryModal/ItineraryModal';
-
+import PageMeta from '@/components/ui/PageMeta/PageMeta';
 import { useLocation } from 'react-router-dom';
 
 const marqueeItems = [
@@ -42,13 +41,17 @@ const HomePage: React.FC = () => {
 
   return (
     <>
+      <PageMeta
+        title="The Sukoon Co — Luxury Customised Travel Across India"
+        description="Boutique customised journeys across Rajasthan, Ladakh, Kashmir, Kerala & more. No fixed departures — only yours. Call +91 70323 94455."
+        canonical="/"
+      />
       <Hero />
       <Marquee items={marqueeItems} />
       <Intro />
       <LogoMap />
       <Itineraries />
       <Experience />
-      <Approach />
       <Testimonials />
       <CtaSection />
       <ItineraryModal />

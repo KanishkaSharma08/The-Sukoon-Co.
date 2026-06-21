@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useModal } from '@/context/ModalContext';
 import { getItinerary } from '@/data/itineraries';
@@ -6,10 +6,11 @@ import styles from './ItineraryModal.module.scss';
 import { jsPDF } from 'jspdf';
 
 const ItineraryModal: React.FC = () => {
-  const { activeId, closeModal } = useModal();
+  const { activeId, closeModal, openEnquiry } = useModal();
   const itinerary = activeId ? getItinerary(activeId) : null;
   const [isGenerating, setIsGenerating] = useState(false);
   const [pdfLink, setPdfLink] = useState<{ url: string; fileName: string; automatic: boolean } | null>(null);
+  const blobUrlRef = useRef<string | null>(null);
 
   useEffect(() => {
     const handleKey = (e: KeyboardEvent) => {
@@ -19,8 +20,12 @@ const ItineraryModal: React.FC = () => {
     return () => window.removeEventListener('keydown', handleKey);
   }, [closeModal]);
 
-  // Reset PDF link when modal content changes
+  // Reset PDF link when modal content changes + revoke old blob URLs (memory leak fix)
   useEffect(() => {
+    if (blobUrlRef.current) {
+      URL.revokeObjectURL(blobUrlRef.current);
+      blobUrlRef.current = null;
+    }
     setPdfLink(null);
     setIsGenerating(false);
   }, [activeId]);
@@ -172,7 +177,10 @@ const ItineraryModal: React.FC = () => {
 
         const fileName = `sukoon-${activeId}-itinerary.pdf`;
         const pdfBlob = doc.output('blob');
+        // Revoke previous blob URL before creating a new one
+        if (blobUrlRef.current) URL.revokeObjectURL(blobUrlRef.current);
         const blobUrl = URL.createObjectURL(pdfBlob);
+        blobUrlRef.current = blobUrl;
 
         let downloadTriggered = false;
         try {
@@ -279,6 +287,12 @@ const ItineraryModal: React.FC = () => {
                 </div>
               )}
 
+              <button
+                className={styles.planBtn}
+                onClick={() => openEnquiry(itinerary?.name)}
+              >
+                Plan This Trip →
+              </button>
               <button
                 className={styles.cta}
                 onClick={handleDownload}

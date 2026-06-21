@@ -1,0 +1,148 @@
+Line 6: — | <title>The Sukoon Co — Clickable Prototype</title>
+Line 87: — | /* SVG path transitions — all paths get smooth color transition */
+Line 99: — | /* Sidebar columns — relative container, panels absolutely positioned to align with logo panels */
+Line 102: — | /* Panel row — absolutely positioned at exact vertical center of its logo panel */
+Line 283: → | .iti-link::after{content:'→';}
+Line 404: — | /* Gray base layer — always visible, desaturated */
+Line 414: — | /* Color top layer — always on top, clipped to nothing by default */
+Line 426: — | /* On zone hover — clip reveals that panel, showing color */
+Line 901: → | .featured-readtime::after{content:'→';color:var(--gold);transition:transform .2s;}
+Line 904: — | /* STORY GRID — editorial broadsheet: numbered rows, hairline rules, byline convention */
+Line 920: — | .story-date::before{content:'—';margin-right:12px;color:rgba(255,255,255,.2);}
+Line 1024: · | <span class="marquee-item">Himalayan Expeditions <span class="marquee-sep">·</span></span>
+Line 1025: · | <span class="marquee-item">Rajasthan Forts <span class="marquee-sep">·</span></span>
+Line 1026: · | <span class="marquee-item">Tiger Safaris <span class="marquee-sep">·</span></span>
+Line 1027: · | <span class="marquee-item">South India Temples <span class="marquee-sep">·</span></span>
+Line 1028: · | <span class="marquee-item">Kerala Backwaters <span class="marquee-sep">·</span></span>
+Line 1029: · | <span class="marquee-item">Goa Coastlines <span class="marquee-sep">·</span></span>
+Line 1030: · | <span class="marquee-item">Bespoke Travel <span class="marquee-sep">·</span></span>
+Line 1031: · | <span class="marquee-item">Himalayan Expeditions <span class="marquee-sep">·</span></span>
+Line 1032: · | <span class="marquee-item">Rajasthan Forts <span class="marquee-sep">·</span></span>
+Line 1033: · | <span class="marquee-item">Tiger Safaris <span class="marquee-sep">·</span></span>
+Line 1034: · | <span class="marquee-item">South India Temples <span class="marquee-sep">·</span></span>
+Line 1035: · | <span class="marquee-item">Kerala Backwaters <span class="marquee-sep">·</span></span>
+Line 1036: · | <span class="marquee-item">Goa Coastlines <span class="marquee-sep">·</span></span>
+Line 1037: · | <span class="marquee-item">Bespoke Travel <span class="marquee-sep">·</span></span>
+Line 1045: सुकून | <div style="margin-bottom:32px;"><span id="sukoon-word">सुकून</span><br><span id="sukoon-lang">The H
+Line 1048: — | <p class="intro-body">The Sukoon Co. is a bootstrapped, founder-led boutique travel company built on
+Line 1073: → | <a role="button" tabindex="0" class="dest-tag live" onclick="goTo('ladakh'); return false;"><span cl
+Line 1074: → | <a role="button" tabindex="0" class="dest-tag live" onclick="goTo('zanskar'); return false;"><span c
+Line 1075: → | <a role="button" tabindex="0" class="dest-tag live" onclick="goTo('himachal'); return false;"><span 
+Line 1076: → | <a role="button" tabindex="0" class="dest-tag live" onclick="goTo('uttarakhand'); return false;"><sp
+Line 1086: → | <a role="button" tabindex="0" class="dest-tag live" onclick="goTo('rajasthan'); return false;"><span
+Line 1132: → | <a role="button" tabindex="0" class="dest-tag live" onclick="goTo('mp'); return false;"><span class=
+Line 1133: → | <a role="button" tabindex="0" class="dest-tag live" onclick="goTo('banaras'); return false;"><span c
+Line 1145: → | <a role="button" tabindex="0" class="dest-tag live" onclick="goTo('mp'); return false;"><span class=
+Line 1158: → | <a role="button" tabindex="0" class="dest-tag live" onclick="goTo('tirupati'); return false;"><span 
+Line 1182: ···→ | <div class="iti-over"><span class="iti-region">Rajasthan</span><div class="iti-name">The Royal Heart
+Line 1186: –····→ | <div class="iti-over"><span class="iti-region">Ladakh</span><div class="iti-name">The Quiet Peaks</d
+Line 1190: ···→ | <div class="iti-over"><span class="iti-region">Zanskar</span><div class="iti-name">The Frozen River<
+Line 1194: ··→ | <div class="iti-over"><span class="iti-region">Banaras</span><div class="iti-name">City of Light</di
+Line 1198: ··→ | <div class="iti-over"><span class="iti-region">Tirupati</span><div class="iti-name">The Sacred Summi
+Line 1202: ····→ | <div class="iti-over"><span class="iti-region">Himachal Pradesh</span><div class="iti-name">Valley t
+Line 1206: –···→ | <div class="iti-over"><span class="iti-region">Kashmir</span><div class="iti-name">Beyond Dal Lake</
+Line 1210: ···→ | <div class="iti-over"><span class="iti-region">Madhya Pradesh</span><div class="iti-name">The Tiger 
+Line 1236: ★★★★★· | <div class="testi reveal d1"><div class="stars">★★★★★</div><p class="testi-q">"I have travelled acro
+Line 1237: ★★★★★· | <div class="testi reveal d2"><div class="stars">★★★★★</div><p class="testi-q">"We saw a Bengal tiger
+Line 1238: ★★★★★· | <div class="testi reveal d3"><div class="stars">★★★★★</div><p class="testi-q">"The Ladakh trip was e
+Line 1275: سکون | <p class="ety-word reveal">سکون</p>
+Line 1276: — | <p class="ety-sub reveal d1">Sukoon — Urdu for peace, stillness</p>
+Line 1293: — | <p>Aditya completed his engineering and later pursued an MBA, after which he built a career in banki
+Line 1294: — | <p>A year before starting The Sukoon Co., Aditya quit his banking job. Not impulsively — deliberatel
+Line 1306: — | <p>Kanishka is a product designer specialising in UI/UX. He and Aditya met during engineering and st
+Line 1307: —— | <p>Kanishka owns everything digital at The Sukoon Co.: the website, built from scratch and not a tem
+Line 1339: — | <p class="phil-item-body">We will stay small deliberately. The Sukoon Co. will never process 500 boo
+Line 1356: ————— | <p style="margin-top:32px;font-size:13px;font-weight:300;color:rgba(255,255,255,.4);max-width:560px;
+Line 1387: — | <p class="ph-sub reveal d3">We launch with three regions, fully lived in. Many more are on the way —
+Line 1409: ···– | <div class="dest-tagline">Pangong · Hanle dark sky · Tso Moriri · 9–10 Days</div>
+Line 1410: → | <span class="dest-cta">View Itinerary →</span>
+Line 1418: ··· | <div class="dest-tagline">Leh · Nubra · Umling La (5,798m) · 8 Days</div>
+Line 1419: → | <span class="dest-cta">View Itinerary →</span>
+Line 1427: ··· | <div class="dest-tagline">Khardung La · Nubra dunes · Turtuk · 6 Days</div>
+Line 1428: → | <span class="dest-cta">View Itinerary →</span>
+Line 1435: –– | <div class="dest-name">Manali–Zanskar–Leh</div>
+Line 1436: ··· | <div class="dest-tagline">Shinkula La · Phuktal · Padum · 14 Days</div>
+Line 1437: → | <span class="dest-cta">View Itinerary →</span>
+Line 1445: ··· | <div class="dest-tagline">Phuktal · Padum · Suru Valley · 8 Days</div>
+Line 1446: → | <span class="dest-cta">View Itinerary →</span>
+Line 1455: · | <div class="soon-chip-tag">Frozen Zanskar river walk · Winter only</div>
+Line 1479: –– | <div class="dest-name">Kinnaur–Spiti–Chandratal</div>
+Line 1480: ···· | <div class="dest-tagline">Chitkul · Kalpa · Tabo · Kaza · 9 Days</div>
+Line 1481: → | <span class="dest-cta">View Itinerary →</span>
+Line 1489: · | <div class="dest-tagline">Same circuit, entry from Chandigarh/Delhi · 9 Days</div>
+Line 1490: → | <span class="dest-cta">View Itinerary →</span>
+Line 1499: ·· | <div class="soon-chip-tag">Paragliding capital · Monasteries · Cafes</div>
+Line 1515: ·· | <div class="soon-chip-tag">Malana · Tosh · Kheerganga homestays</div>
+Line 1523: · | <div class="soon-chip-tag">Tibetan culture · Triund trek</div>
+Line 1548: ···– | <div class="dest-tagline">Gulmarg · Pahalgam · Gurez Valley · 7–8 Days</div>
+Line 1549: → | <span class="dest-cta">View Itinerary →</span>
+Line 1558: · | <div class="soon-chip-tag">Sonamarg extensions · Warwan Valley</div>
+Line 1572: —– | <h2 class="sec-title">Phase 2 — coming 2025–2026.</h2>
+Line 1582: · | <div class="soon-chip-tag">Kumaon Himalayas · Milam Glacier</div>
+Line 1590: · | <div class="soon-chip-tag">Highest Shiva temple · Deoria Tal</div>
+Line 1604: — | <h2 class="sec-title">Phase 3 — 2026 onwards.</h2>
+Line 1614: ··· | <div class="soon-chip-tag">Jaisalmer · Jodhpur · Bundi · Khimsar</div>
+Line 1622: ·· | <div class="soon-chip-tag">Varanasi · Orchha · Bundelkhand circuit</div>
+Line 1630: ·· | <div class="soon-chip-tag">Khajuraho · Panna · Pench</div>
+Line 1638: ··· | <div class="soon-chip-tag">Coorg · Wayanad · Hampi · Kodaikanal</div>
+Line 1688: — | <!-- STORY GRID — editorial broadsheet layout -->
+Line 1695: — | <span class="edition-line">Issue No. 04 — Field Notes</span>
+Line 1725: – | <h3 class="story-title">The Kinnaur–Spiti Road, Mile by Mile</h3>
+Line 1726: — | <p class="story-excerpt">Nine days, one road, and a valley that changes character every twenty kilom
+Line 1752: — | <form class="nl-form reveal d2" onsubmit="event.preventDefault(); alert('Thanks — we will be in touc
+Line 1765: · | thesukoonco.in · hello@thesukoonco.in
+Line 1776: ©· | <span class="foot-copy">© 2025 The Sukoon Co. · thesukoonco.in</span>
+Line 1875: — | // Cancel any pending close — we're committing to a zone now
+Line 1904: — | // Short grace period only — lets the mouse travel from the logo zone to its OWN
+Line 1924: سکون | { word: 'سکون',     lang: 'The Urdu word'     },
+Line 1925: सुकून | { word: 'सुकून',    lang: 'The Hindi word'     },
+Line 1926: శాంతి | { word: 'శాంతి',    lang: 'The Telugu word'    },
+Line 1927: സുകൂൻ | { word: 'സുകൂൻ',   lang: 'The Malayalam word' },
+Line 1928: சுகூன் | { word: 'சுகூன்',   lang: 'The Tamil word'     },
+Line 1929: ಸುಕೂನ್ | { word: 'ಸುಕೂನ್',  lang: 'The Kannada word'   },
+Line 1930: सुकून | { word: 'सुकून',    lang: 'The Marathi word'   },
+Line 1968: ä | *               2015-2021 Lukas Holländer <lukas.hollaender@yworks.com>, https://github.com/Hackbret
+Line 2045: ¿ÿú¶Ð©þºß¬à | */var P={print:4,modify:8,copy:16,"annot-forms":32};function k(t,e,r,n){this.v=1,this.r=2;var i=192;
+Line 2356: «»«‹›‹⁅⁆⁅⁽⁾⁽₍₎₍≤≥≤〈〉〈﹙﹚﹙﹛﹜﹛﹝﹞﹝﹤﹥﹤ | function(t){t.__bidiEngine__=t.prototype.__bidiEngine__=function(t){var r,n,i,a,o,s,c,u=e,l=[[0,3,0,
+Line 2366: ··· | route: "Udaipur · Jodhpur · Jaisalmer · Jaipur",
+Line 2374: – | { day: "1–3", title: "Udaipur", desc: "City Palace, Lake Pichola boat ride, Jagdish Temple, Saheliyo
+Line 2375: – | { day: "4–5", title: "Jodhpur", desc: "Mehrangarh Fort, Jaswant Thada, the blue old city, Umaid Bhaw
+Line 2376: – | { day: "6–8", title: "Jaisalmer", desc: "Jaisalmer Fort (living fort), Patwon ki Haveli, Sam Sand Du
+Line 2377: – | { day: "9–11", title: "Jaipur", desc: "Amber Fort, City Palace, Hawa Mahal, Jantar Mantar, Johari Ba
+Line 2380: – | notes: "Best time: October–March. Carry light cottons for the day and a warm layer for desert nights
+Line 2385: – | duration: "8–10 Days",
+Line 2386: ···· | route: "Leh · Nubra · Pangong · Hanle · Umling La",
+Line 2394: –— | { day: "1–2", title: "Leh", desc: "Acclimatisation days — Leh Palace, Shanti Stupa, local market, ge
+Line 2395: – | { day: "3–4", title: "Nubra Valley", desc: "Khardung La crossing, Diskit Monastery, sand dunes and d
+Line 2396: – | { day: "5–6", title: "Pangong Lake", desc: "Changla Pass, overnight by the lake, sunrise over the ch
+Line 2397: – | { day: "7–8", title: "Hanle & Umling La", desc: "India's highest motorable pass, Hanle's dark-sky ob
+Line 2398: – | { day: "9–10", title: "Return & Departure", desc: "Drive back to Leh, buffer day for weather, depart
+Line 2400: –— | notes: "Best time: June–September. Acclimatisation is non-negotiable — no high-altitude push before 
+Line 2406: ··· | route: "Padum · Phuktal · Suru Valley · Manali",
+Line 2414: – | { day: "1–2", title: "Kargil to Padum", desc: "Drive via Suru Valley, Rangdum Monastery, Pensi La pa
+Line 2415: – | { day: "3–4", title: "Padum & Phuktal", desc: "Day trek or drive toward Phuktal Monastery, built int
+Line 2416: – | { day: "5–6", title: "Zanskar villages", desc: "Karsha Monastery, Stongdey, quiet valley villages la
+Line 2417: – | { day: "7–8", title: "Return via Manali", desc: "Cross back over high passes toward Manali, end of t
+Line 2419: –— | notes: "Best time: July–September (road open). Extremely remote — limited connectivity throughout. N
+Line 2425: ·· | route: "Varanasi Ghats · Sarnath · Ganga Aarti",
+Line 2439: –— | notes: "Best time: October–March. This is a single-base, low-effort trip — same hotel throughout, id
+Line 2445: ·· | route: "Tirumala · Padmavathi Temple · Chandragiri",
+Line 2457: — | notes: "Best time: year-round (avoid peak festival crowds unless intended). Darshan tickets and timi
+Line 2463: ···· | route: "Kinnaur · Chitkul · Tabo · Kaza · Chandratal",
+Line 2471: – | { day: "1–2", title: "Kinnaur", desc: "Drive along the Sutlej, apple orchards, Kalpa for Kinner Kail
+Line 2473: – | { day: "4–5", title: "Tabo & Dhankar", desc: "1,000-year-old Tabo Monastery, Dhankar's cliffside gom
+Line 2474: –— | { day: "6–7", title: "Kaza & Spiti villages", desc: "Key Monastery, Kibber, Langza's fossil village,
+Line 2475: – | { day: "8–9", title: "Chandratal & Manali", desc: "Crossing Kunzum Pass to camp by Chandratal lake, 
+Line 2477: –— | notes: "Best time: June–September (roads open). High-altitude circuit — acclimatise in Kinnaur befor
+Line 2483: ·· | route: "Srinagar · Gulmarg · Sonamarg",
+Line 2496: ––— | notes: "Best time: April–June (spring bloom) or September–November (autumn colours). Single-base for
+Line 2502: ··· | route: "Bandhavgarh · Kanha · Pench · Khajuraho",
+Line 2510: – | { day: "1–2", title: "Bandhavgarh", desc: "Two safari drives, highest tiger density in India, Bandha
+Line 2511: – | { day: "3–4", title: "Kanha", desc: "Inspiration for Kipling's Jungle Book, sal forests and open mea
+Line 2512: – | { day: "5–6", title: "Pench", desc: "Quieter reserve on the Maharashtra border, strong birdlife alon
+Line 2513: – | { day: "7–8", title: "Khajuraho & Departure", desc: "UNESCO temple complex en route, then airport/ra
+Line 2515: –— | notes: "Best time: November–April (parks close mid-year for monsoon). Safari permits are limited and
+Line 2549: ↓ | <button class="iti-modal-cta" id="itiDownloadBtn" onclick="downloadItineraryPDF('${key}')">Download 
+Line 2569: … | if (btn) { btn.disabled = true; btn.textContent = 'Preparing PDF…'; }
+Line 2710: · | doc.text('The Sukoon Co · Customised journeys, no fixed departures', margin, footerY);
+Line 2753: ↓ | if (btn) { btn.disabled = false; btn.textContent = 'Download Itinerary ↓'; }

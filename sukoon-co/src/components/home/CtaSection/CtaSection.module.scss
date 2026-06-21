@@ -1,33 +1,40 @@
-.section {
-  position: relative;
-  padding: 140px 60px;
-  text-align: center;
-  border-top: 1px solid rgba(255, 255, 255, 0.07);
-  overflow: hidden;
-
-  @media (max-width: $bp-mobile) { padding: 80px 24px; }
+@keyframes ctaScroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
 }
 
-.bgText {
+.section {
+  padding: 110px 60px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+
+  @media (max-width: $bp-mobile) {
+    padding: 70px 24px;
+  }
+}
+
+.marqueeWrap {
   position: absolute;
   top: 50%;
   left: 0;
-  right: 0;
   transform: translateY(-50%);
-  white-space: nowrap;
-  display: flex;
+  width: 100%;
+  overflow: hidden;
+  pointer-events: none;
+  line-height: 1;
+}
 
-  span {
-    font-size: clamp(100px, 18vw, 220px);
-    font-weight: 900;
-    letter-spacing: -0.06em;
-    color: rgba(255, 255, 255, 0.025);
-    animation: ctaScroll 18s linear infinite;
-    display: inline-block;
-    flex-shrink: 0;
-    pointer-events: none;
-    user-select: none;
-  }
+.marquee {
+  display: inline-block;
+  white-space: nowrap;
+  font-size: 26vw;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  color: rgba(255, 255, 255, 0.12);
+  animation: ctaScroll 40s linear infinite;
+  will-change: transform;
 }
 
 .content {
@@ -35,34 +42,41 @@
   z-index: 2;
 }
 
-.eyebrow {
-  font-size: 9px;
-  font-weight: 600;
-  letter-spacing: 0.3em;
-  text-transform: uppercase;
-  color: var(--gold);
-  margin-bottom: 20px;
-}
-
 .title {
-  font-size: clamp(38px, 6vw, 80px);
+  font-size: clamp(44px, 7vw, 100px);
   font-weight: 800;
   letter-spacing: -0.04em;
-  line-height: 1;
-  margin-bottom: 24px;
+  line-height: 0.96;
+  margin-bottom: 28px;
 
   em {
     font-style: italic;
     font-weight: 300;
-    color: rgba(255, 255, 255, 0.55);
+    color: rgba(255, 255, 255, 0.38);
   }
 }
 
 .sub {
   font-size: 15px;
   font-weight: 300;
+  color: rgba(255, 255, 255, 0.45);
+  max-width: 440px;
+  margin: 0 auto 52px;
   line-height: 1.8;
-  color: rgba(255, 255, 255, 0.5);
-  max-width: 400px;
-  margin: 0 auto 48px;
+}
+
+.contact {
+  margin-top: 24px;
+  font-size: 12px;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.3);
+  letter-spacing: 0.04em;
+
+  a {
+    color: rgba(255, 255, 255, 0.55);
+    text-decoration: none;
+    transition: color 0.2s;
+
+    &:hover { color: var(--gold); }
+  }
 }

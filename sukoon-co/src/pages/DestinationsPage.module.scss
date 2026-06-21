@@ -1,0 +1,84 @@
+.ctaSection {
+  padding: 110px 60px;
+  text-align: center;
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+
+  @media (max-width: 768px) {
+    padding: 80px 24px;
+  }
+}
+
+.ctaH {
+  font-size: clamp(44px, 7vw, 100px);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 0.96;
+  margin-bottom: 28px;
+
+  em {
+    font-style: italic;
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.38);
+  }
+}
+
+.ctaSub {
+  font-size: 15px;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.45);
+  max-width: 440px;
+  margin: 0 auto 52px;
+  line-height: 1.8;
+}
+
+.btnGroup {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  justify-content: center;
+
+  @media (max-width: 480px) {
+    flex-direction: column;
+    gap: 10px;
+  }
+}
+
+.btnP {
+  font-family: var(--font);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--black);
+  background: var(--white);
+  border: none;
+  padding: 18px 44px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.2s;
+  display: inline-block;
+
+  &:hover {
+    background: var(--gold);
+  }
+}
+
+.btnS {
+  font-family: var(--font);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--white);
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  padding: 17px 36px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: border-color 0.2s;
+  display: inline-block;
+
+  &:hover {
+    border-color: rgba(255, 255, 255, 0.7);
+  }
+}

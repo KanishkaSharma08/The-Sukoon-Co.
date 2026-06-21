@@ -160,6 +160,16 @@ const panels: PanelData[] = [
   },
 ];
 
+const zoneColors: Record<Zone, string> = {
+  mountains: '#A8D8EA',
+  temples:   '#D4B483',
+  rajasthan: '#E8C470',
+  safari:    '#7FB77E',
+  goa:       '#FF8C69',
+  kerala:    '#F5A623',
+};
+
+
 const LogoMap: React.FC = () => {
   const [activeZone, setActiveZone] = useState<Zone | null>(null);
   const { openModal } = useModal();
@@ -168,9 +178,16 @@ const LogoMap: React.FC = () => {
   const activate = (zone: Zone) => setActiveZone(zone);
   const deactivate = () => setActiveZone(null);
 
+  const goTo = (id: string) => {
+    const el = document.getElementById(id);
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+  };
+
   const handleTagClick = (tag: DestTag) => {
     if (tag.status === 'live' && tag.itineraryId) {
-      openModal(tag.itineraryId);
+      goTo(tag.itineraryId);
     }
   };
 
@@ -223,10 +240,22 @@ const LogoMap: React.FC = () => {
                   ))}
                 </div>
               </div>
-              <div className={styles.connectorLine} />
+              <div
+                className={styles.connectorLine}
+                style={
+                  activeZone === panel.zone
+                    ? {
+                        background: zoneColors[panel.zone],
+                        boxShadow: `0 0 10px ${zoneColors[panel.zone]}cc, 0 0 24px ${zoneColors[panel.zone]}44`,
+                        width: '48px',
+                      }
+                    : {}
+                }
+              />
             </div>
           ))}
         </div>
+
 
         {/* LOGO CENTER */}
         <div
@@ -244,37 +273,37 @@ const LogoMap: React.FC = () => {
             className={`${styles.lz} ${styles.lzMountains}`}
             onMouseEnter={() => activate('mountains')}
             onMouseLeave={deactivate}
-            onClick={() => openModal('ladakh')}
+            onClick={() => goTo('ladakh')}
           />
           <div
             className={`${styles.lz} ${styles.lzTemples}`}
             onMouseEnter={() => activate('temples')}
             onMouseLeave={deactivate}
-            onClick={() => openModal('banaras')}
+            onClick={() => goTo('banaras')}
           />
           <div
             className={`${styles.lz} ${styles.lzRajasthan}`}
             onMouseEnter={() => activate('rajasthan')}
             onMouseLeave={deactivate}
-            onClick={() => openModal('rajasthan')}
+            onClick={() => goTo('rajasthan')}
           />
           <div
             className={`${styles.lz} ${styles.lzSafari}`}
             onMouseEnter={() => activate('safari')}
             onMouseLeave={deactivate}
-            onClick={() => openModal('mp')}
+            onClick={() => goTo('mp')}
           />
           <div
             className={`${styles.lz} ${styles.lzGoa}`}
             onMouseEnter={() => activate('goa')}
             onMouseLeave={deactivate}
-            onClick={() => navigate('/destinations')}
+            onClick={() => goTo('rajasthan')}
           />
           <div
             className={`${styles.lz} ${styles.lzKerala}`}
             onMouseEnter={() => activate('kerala')}
             onMouseLeave={deactivate}
-            onClick={() => openModal('tirupati')}
+            onClick={() => goTo('tirupati')}
           />
         </div>
 
@@ -288,7 +317,18 @@ const LogoMap: React.FC = () => {
               onMouseEnter={() => activate(panel.zone)}
               onMouseLeave={deactivate}
             >
-              <div className={styles.connectorLine} />
+              <div
+                className={styles.connectorLine}
+                style={
+                  activeZone === panel.zone
+                    ? {
+                        background: zoneColors[panel.zone],
+                        boxShadow: `0 0 10px ${zoneColors[panel.zone]}cc, 0 0 24px ${zoneColors[panel.zone]}44`,
+                        width: '48px',
+                      }
+                    : {}
+                }
+              />
               <div className={styles.panelPopup}>
                 <div className={styles.popupTitle}>
                   <span className={styles.popupIcon}>{panel.icon}</span>
@@ -315,6 +355,7 @@ const LogoMap: React.FC = () => {
             </div>
           ))}
         </div>
+
       </RevealWrapper>
     </section>
   );

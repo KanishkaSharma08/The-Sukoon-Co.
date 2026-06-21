@@ -15,6 +15,8 @@ export interface Itinerary {
   name: string;
   duration: string;
   route: string;
+  cardDuration?: string;
+  cardRoute?: string;
   imgSrc: string;
   isWide?: boolean;
   stats: ItineraryStat[];

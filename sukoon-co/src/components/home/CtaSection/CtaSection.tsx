@@ -1,34 +1,53 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { useModal } from '@/context/ModalContext';
 import styles from './CtaSection.module.scss';
 
-const CtaSection: React.FC = () => (
-  <section className={styles.section} id="cta">
-    <div className={styles.bgText} aria-hidden="true">
-      <span>SUKOON &nbsp; SUKOON &nbsp; SUKOON &nbsp; SUKOON &nbsp;</span>
-      <span>SUKOON &nbsp; SUKOON &nbsp; SUKOON &nbsp; SUKOON &nbsp;</span>
-    </div>
-    <div className={styles.content}>
-      <p className={styles.eyebrow}>Begin Here</p>
-      <h2 className={styles.title}>
-        Ready to find
-        <br />
-        your <em>sukoon</em>?
-      </h2>
-      <p className={styles.sub}>
-        Tell us who you are, where you want to go, and what you want to feel. We'll take it from
-        there.
-      </p>
-      <div className="btn-group">
-        <a href="https://wa.me/91XXXXXXXXXX" className="btn-p">
-          Start a Conversation
-        </a>
-        <Link to="/destinations" className="btn-s">
-          Explore Destinations
-        </Link>
+const CtaSection: React.FC = () => {
+  const { openEnquiry } = useModal();
+
+  return (
+    <section className={styles.section} id="cta">
+      <div className={styles.marqueeWrap}>
+        <div className={styles.marquee}>
+          SUKOON &nbsp;&nbsp;&nbsp; SUKOON &nbsp;&nbsp;&nbsp; SUKOON &nbsp;&nbsp;&nbsp; SUKOON &nbsp;&nbsp;&nbsp; SUKOON &nbsp;&nbsp;&nbsp; SUKOON &nbsp;&nbsp;&nbsp; SUKOON &nbsp;&nbsp;&nbsp; SUKOON &nbsp;&nbsp;&nbsp;
+        </div>
       </div>
-    </div>
-  </section>
-);
+      <div className={styles.content}>
+        <p className="sec-label">Begin Your Journey</p>
+        <h2 className={styles.title}>
+          Your India,
+          <br />
+          <em>your pace.</em>
+        </h2>
+        <p className={styles.sub}>
+          Start with a message. Tell us where you want to go, when, and with whom. We build the rest — from scratch, around you.
+        </p>
+        <div className="btn-group">
+          <button
+            id="cta-enquire-btn"
+            className="btn-p"
+            onClick={() => openEnquiry()}
+          >
+            Plan Your Journey
+          </button>
+          <a
+            href={`https://wa.me/917032394455?text=${encodeURIComponent("Hi, I'd like to enquire about a customised trip with The Sukoon Co.")}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-s"
+          >
+            WhatsApp Us
+          </a>
+        </div>
+        <p className={styles.contact}>
+          Or call us:{' '}
+          <a href="tel:+917032394455">+91 70323 94455</a>
+          {' · '}
+          <a href="tel:+919689833000">+91 96898 33000</a>
+        </p>
+      </div>
+    </section>
+  );
+};
 
 export default CtaSection;

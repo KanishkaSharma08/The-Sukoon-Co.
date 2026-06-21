@@ -15,7 +15,23 @@ const Hero: React.FC = () => {
 
   return (
     <section className={styles.hero} id="hero">
-      <div className={`${styles.bg} ${loaded ? styles.loaded : ''}`} />
+      <div className={`${styles.bgContainer} ${loaded ? styles.loaded : ''}`}>
+        <video
+          className={styles.videoBg}
+          autoPlay
+          muted
+          loop
+          playsInline
+          poster="https://images.unsplash.com/photo-1524492412937-b28074a5d7da?w=2000&q=85"
+        >
+          {/* Sample high-quality loop video (mountains/landscape) */}
+          <source
+            src="https://assets.mixkit.co/videos/preview/mixkit-beautiful-landscape-of-mountains-with-clouds-40811-large.mp4"
+            type="video/mp4"
+          />
+        </video>
+        <div className={styles.overlay} />
+      </div>
       <div className={styles.eyebrow}>Travel at Ease.</div>
       <h1 className={styles.headline}>
         Travel

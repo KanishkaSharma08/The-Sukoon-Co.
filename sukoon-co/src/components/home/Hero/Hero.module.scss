@@ -1,3 +1,8 @@
+@keyframes scrollAnim {
+  0%   { top: -50%; }
+  100% { top: 150%; }
+}
+
 .hero {
   position: relative;
   height: 100vh;
@@ -13,18 +18,31 @@
   }
 }
 
-.bg {
+.bgContainer {
   position: absolute;
   inset: 0;
-  background: url('https://images.unsplash.com/photo-1524492412937-b28074a5d7da?w=2000&q=85')
-    center / cover no-repeat;
-  filter: brightness(0.35);
+  overflow: hidden;
   transform: scale(1.06);
   transition: transform 9s ease;
+  z-index: 1;
 
   &.loaded {
     transform: scale(1);
   }
+}
+
+.videoBg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(10, 10, 10, 0.65); // Dark overlay for text readability
+  z-index: 2;
 }
 
 .eyebrow {
@@ -35,6 +53,7 @@
   color: var(--gold);
   margin-bottom: 20px;
   position: relative;
+  z-index: 3;
   display: flex;
   align-items: center;
   gap: 14px;
@@ -53,6 +72,7 @@
   line-height: 0.92;
   letter-spacing: -0.04em;
   position: relative;
+  z-index: 3;
 
   em {
     font-style: italic;
@@ -63,6 +83,7 @@
 
 .bottom {
   position: relative;
+  z-index: 3;
   display: flex;
   align-items: flex-end;
   justify-content: space-between;

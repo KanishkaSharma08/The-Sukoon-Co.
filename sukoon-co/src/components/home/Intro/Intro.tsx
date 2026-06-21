@@ -14,19 +14,25 @@ const sukoonWords = [
 ];
 
 const Intro: React.FC = () => {
-  const [index, setIndex] = useState(1); // Start on Hindi to match prototype's initial HTML
+  const [index, setIndex] = useState(-1); // -1 represents the initial HTML markup state
   const [opacity, setOpacity] = useState(1);
 
   useEffect(() => {
     const interval = setInterval(() => {
       setOpacity(0);
       setTimeout(() => {
-        setIndex((prev) => (prev + 1) % sukoonWords.length);
+        setIndex((prev) => {
+          if (prev === -1) return 1; // Initial state transitions to index 1 (Hindi) on first tick
+          return (prev + 1) % sukoonWords.length;
+        });
         setOpacity(1);
       }, 300);
     }, 2200);
     return () => clearInterval(interval);
   }, []);
+
+  const currentWord = index === -1 ? 'सुकून' : sukoonWords[index].word;
+  const currentLang = index === -1 ? 'The Hindi word for stillness.' : sukoonWords[index].lang;
 
   return (
     <section className={styles.section} id="intro">
@@ -38,14 +44,14 @@ const Intro: React.FC = () => {
             className={styles.sukoonWord}
             style={{ opacity }}
           >
-            {sukoonWords[index].word}
+            {currentWord}
           </span>
           <span
             id="sukoon-lang"
             className={styles.sukoonLang}
             style={{ opacity }}
           >
-            {sukoonWords[index].lang}
+            {currentLang}
           </span>
         </div>
         <h2 className={styles.introH}>

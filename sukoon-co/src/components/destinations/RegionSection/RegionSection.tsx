@@ -1,5 +1,6 @@
 import React from 'react';
 import DestCard from '@/components/destinations/DestCard/DestCard';
+import RevealWrapper from '@/components/ui/RevealWrapper/RevealWrapper';
 import type { Region } from '@/types/destination';
 import styles from './RegionSection.module.scss';
 
@@ -9,7 +10,7 @@ interface Props {
 
 const RegionSection: React.FC<Props> = ({ region }) => (
   <section className={`${styles.regionSection} ${region.id === 'phase3' ? 'border-bottom-none' : ''}`} id={region.id}>
-    <div className={`${styles.regionHeader} reveal`}>
+    <RevealWrapper className={styles.regionHeader}>
       <div className={styles.regionHeaderLeft}>
         <span className={styles.regionNum}>{region.num}</span>
         <div>
@@ -20,7 +21,7 @@ const RegionSection: React.FC<Props> = ({ region }) => (
       <span className={`${styles.regionStatus} ${region.statusType === 'soon' ? styles.soon : ''}`}>
         {region.status}
       </span>
-    </div>
+    </RevealWrapper>
 
     {region.cards.length > 0 && (
       <div className={styles.destGrid}>

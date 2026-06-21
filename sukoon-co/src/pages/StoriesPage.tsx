@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import PageHero from '@/components/ui/PageHero/PageHero';
 import RevealWrapper from '@/components/ui/RevealWrapper/RevealWrapper';
 import { featuredStory, stories } from '@/data/stories';
+import PageMeta from '@/components/ui/PageMeta/PageMeta';
 import styles from './StoriesPage.module.scss';
 
 const StoriesPage: React.FC = () => {
@@ -11,9 +12,15 @@ const StoriesPage: React.FC = () => {
 
   return (
     <div className={styles.subpagePad}>
+      <PageMeta
+        title="Field Notes — The Sukoon Co"
+        description="Honest dispatches from the road. Stories about travelling slow, travelling right, and coming back quieter. Read about India’s extraordinary places from people who live there."
+        canonical="/stories"
+      />
       {/* PAGE HERO */}
       <PageHero
-        eyebrow="03 / Stories"
+        index="03 / Stories"
+        label="From The Road"
         title={
           <>
             Dispatches from places
@@ -22,12 +29,12 @@ const StoriesPage: React.FC = () => {
           </>
         }
         subtitle="Field notes, route diaries, and honest accounts from the valleys, passes, and ghats we send travellers to."
-        imgSrc="" // Background gradient handled in CSS
       />
 
       {/* FEATURED */}
       <section className={styles.featured} id="featured">
-        <a
+        <RevealWrapper
+          as="a"
           role="button"
           tabIndex={0}
           onClick={(e) => e.preventDefault()}
@@ -45,7 +52,7 @@ const StoriesPage: React.FC = () => {
             <p className={styles.featuredExcerpt}>{featuredStory.excerpt}</p>
             <span className={styles.featuredReadtime}>{featuredStory.readTime}</span>
           </div>
-        </a>
+        </RevealWrapper>
       </section>
 
       {/* STORY GRID */}
@@ -69,12 +76,14 @@ const StoriesPage: React.FC = () => {
 
         <div className={styles.storyGrid}>
           {stories.map((story, i) => (
-            <a
+            <RevealWrapper
+              as="a"
               key={story.id}
               role="button"
               tabIndex={0}
               onClick={(e) => e.preventDefault()}
-              className={`${styles.storyRow} ${i === 1 ? 'd1' : i === 2 ? 'd2' : ''}`}
+              className={styles.storyRow}
+              delay={i > 0 ? (i as 1 | 2 | 3 | 4) : undefined}
             >
               <span className={styles.storyIndex}>
                 {String(i + 1).padStart(2, '0')}
@@ -90,7 +99,7 @@ const StoriesPage: React.FC = () => {
                 <h3 className={styles.storyTitle}>{story.title}</h3>
                 <p className={styles.storyExcerpt}>{story.excerpt}</p>
               </div>
-            </a>
+            </RevealWrapper>
           ))}
         </div>
       </section>

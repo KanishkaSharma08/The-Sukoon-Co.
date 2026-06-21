@@ -5,10 +5,10 @@ import styles from './Testimonials.module.scss';
 
 const Testimonials: React.FC = () => (
   <section className={styles.section} id="testimonials">
-    <div className="reveal">
+    <RevealWrapper>
       <p className="sec-label">Traveller Stories</p>
       <h2 className="sec-title">In their words.</h2>
-    </div>
+    </RevealWrapper>
     <div className={styles.grid}>
       {testimonials.map((t, i) => (
         <RevealWrapper

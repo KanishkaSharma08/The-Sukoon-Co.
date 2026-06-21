@@ -1,7 +1,10 @@
 import React, { useEffect } from 'react';
 import PageHero from '@/components/ui/PageHero/PageHero';
 import RegionSection from '@/components/destinations/RegionSection/RegionSection';
+import RevealWrapper from '@/components/ui/RevealWrapper/RevealWrapper';
 import { regions } from '@/data/destinations';
+import PageMeta from '@/components/ui/PageMeta/PageMeta';
+import styles from './DestinationsPage.module.scss';
 
 const DestinationsPage: React.FC = () => {
   useEffect(() => {
@@ -10,8 +13,14 @@ const DestinationsPage: React.FC = () => {
 
   return (
     <div className="subpage-pad">
+      <PageMeta
+        title="Destinations — The Sukoon Co"
+        description="Explore Rajasthan, Ladakh, Kashmir, Kerala, Goa, Spiti Valley and more. Every destination personally visited by our founders. Customised, private journeys — only yours."
+        canonical="/destinations"
+      />
       <PageHero
-        eyebrow="02 / Destinations"
+        index="02 / Destinations"
+        label="Explore India"
         title={
           <>
             Where we <em>take you.</em>
@@ -22,6 +31,31 @@ const DestinationsPage: React.FC = () => {
       {regions.map((region) => (
         <RegionSection key={region.id} region={region} />
       ))}
+
+      {/* CTA */}
+      <section className={styles.ctaSection} id="cta">
+        <RevealWrapper as="p" className="sec-label">
+          Don't See Your Destination?
+        </RevealWrapper>
+        <RevealWrapper as="h2" className={styles.ctaH} delay={1}>
+          Tell us anyway.
+        </RevealWrapper>
+        <RevealWrapper as="p" className={styles.ctaSub} delay={2}>
+          Our itineraries are starting points, not the full map. If there's somewhere specific you want to go, we'll tell you honestly if it's something we can build well.
+        </RevealWrapper>
+        <div className={styles.btnGroup}>
+          <RevealWrapper delay={3}>
+            <a href="https://wa.me/91XXXXXXXXXX" className={styles.btnP}>
+              WhatsApp Us
+            </a>
+          </RevealWrapper>
+          <RevealWrapper delay={3}>
+            <a href="mailto:hello@thesukoonco.in" className={styles.btnS}>
+              Email Us
+            </a>
+          </RevealWrapper>
+        </div>
+      </section>
     </div>
   );
 };

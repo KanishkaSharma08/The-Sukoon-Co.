@@ -137,6 +137,8 @@ export const itineraries: Itinerary[] = [
     name: 'Beyond Dal Lake',
     duration: '4 Days',
     route: 'Srinagar · Gulmarg · Sonamarg',
+    cardDuration: '7–8 Days',
+    cardRoute: 'Gulmarg · Pahalgam · Gurez · Doodhpathri',
     imgSrc: 'https://images.unsplash.com/photo-1566837945700-30057527ade0?w=900&q=80',
     stats: [
       { val: '4', label: 'Days' },

@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+# Disallow admin / dev paths (none currently, but placeholder for future)
+Disallow: /private/
+
+Sitemap: https://www.thesukoonco.in/sitemap.xml

@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import PageHero from '@/components/ui/PageHero/PageHero';
 import RevealWrapper from '@/components/ui/RevealWrapper/RevealWrapper';
+import PageMeta from '@/components/ui/PageMeta/PageMeta';
 import styles from './AboutPage.module.scss';
 
 const AboutPage: React.FC = () => {
@@ -10,12 +11,22 @@ const AboutPage: React.FC = () => {
 
   return (
     <div className={styles.subpagePad}>
-      {/* PAGE HERO */}
+      <PageMeta
+        title="About Us — The Sukoon Co"
+        description="Meet the founders of The Sukoon Co. We design journeys around stillness, intention, and the India you haven't yet seen. Every destination personally visited — multiple times."
+        canonical="/about"
+      />
       <PageHero
-        eyebrow="01 / About"
-        title="A company of two people who have been everywhere we sell."
+        index="01 / About"
+        label="Who We Are"
+        title={
+          <>
+            A company of two people
+            <br />
+            who have been <em>everywhere we sell.</em>
+          </>
+        }
         subtitle="The Sukoon Co. is a bootstrapped, founder-led boutique travel company built on one belief: the best trip you will ever take is one designed entirely around you."
-        imgSrc="" // Not used in prototype for AboutPage hero background, but wait!
       />
 
       {/* ETYMOLOGY */}

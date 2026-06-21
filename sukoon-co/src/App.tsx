@@ -3,6 +3,8 @@ import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 import Nav from '@/components/layout/Nav/Nav';
 import Footer from '@/components/layout/Footer/Footer';
+import EnquiryForm from '@/components/ui/EnquiryForm/EnquiryForm';
+import WhatsAppWidget from '@/components/ui/WhatsAppWidget/WhatsAppWidget';
 import { ModalProvider } from '@/context/ModalContext';
 import '@/styles/index.scss';
 
@@ -19,6 +21,18 @@ const pageVariants = {
 
 const AnimatedRoutes: React.FC = () => {
   const location = useLocation();
+
+  // Track page views on route changes for Google Analytics
+  React.useEffect(() => {
+    if (typeof window !== 'undefined' && (window as any).gtag) {
+      (window as any).gtag('event', 'page_view', {
+        page_path: location.pathname + location.search,
+        page_location: window.location.href,
+        page_title: document.title
+      });
+    }
+  }, [location.pathname, location.search]);
+
   return (
     <AnimatePresence mode="wait">
       <motion.div
@@ -49,6 +63,9 @@ const App: React.FC = () => (
         </Suspense>
       </main>
       <Footer />
+      {/* Global overlays */}
+      <EnquiryForm />
+      <WhatsAppWidget />
     </ModalProvider>
   </BrowserRouter>
 );
