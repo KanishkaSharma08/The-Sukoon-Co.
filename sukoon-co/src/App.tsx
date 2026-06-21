@@ -12,6 +12,8 @@ const HomePage         = lazy(() => import('@/pages/HomePage'));
 const AboutPage        = lazy(() => import('@/pages/AboutPage'));
 const DestinationsPage = lazy(() => import('@/pages/DestinationsPage'));
 const StoriesPage      = lazy(() => import('@/pages/StoriesPage'));
+const PrivacyPage      = lazy(() => import('@/pages/PrivacyPage'));
+const TermsPage        = lazy(() => import('@/pages/TermsPage'));
 
 const pageVariants = {
   initial: { opacity: 0, y: 12 },
@@ -47,27 +49,46 @@ const AnimatedRoutes: React.FC = () => {
           <Route path="/about"        element={<AboutPage />} />
           <Route path="/destinations" element={<DestinationsPage />} />
           <Route path="/stories"      element={<StoriesPage />} />
+          <Route path="/privacy"      element={<PrivacyPage />} />
+          <Route path="/terms"        element={<TermsPage />} />
         </Routes>
       </motion.div>
     </AnimatePresence>
   );
 };
 
-const App: React.FC = () => (
-  <BrowserRouter>
-    <ModalProvider>
-      <Nav />
-      <main>
-        <Suspense fallback={null}>
-          <AnimatedRoutes />
-        </Suspense>
-      </main>
-      <Footer />
-      {/* Global overlays */}
-      <EnquiryForm />
-      <WhatsAppWidget />
-    </ModalProvider>
-  </BrowserRouter>
-);
+const App: React.FC = () => {
+  React.useEffect(() => {
+    const handleVisibilityChange = () => {
+      if (document.hidden) {
+        document.body.classList.add('page-hidden');
+      } else {
+        document.body.classList.remove('page-hidden');
+      }
+    };
+    document.addEventListener('visibilitychange', handleVisibilityChange);
+    handleVisibilityChange();
+    return () => {
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
+    };
+  }, []);
+
+  return (
+    <BrowserRouter>
+      <ModalProvider>
+        <Nav />
+        <main>
+          <Suspense fallback={null}>
+            <AnimatedRoutes />
+          </Suspense>
+        </main>
+        <Footer />
+        {/* Global overlays */}
+        <EnquiryForm />
+        <WhatsAppWidget />
+      </ModalProvider>
+    </BrowserRouter>
+  );
+};
 
 export default App;

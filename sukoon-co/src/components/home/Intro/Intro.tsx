@@ -18,17 +18,46 @@ const Intro: React.FC = () => {
   const [opacity, setOpacity] = useState(1);
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setOpacity(0);
-      setTimeout(() => {
-        setIndex((prev) => {
-          if (prev === -1) return 1; // Initial state transitions to index 1 (Hindi) on first tick
-          return (prev + 1) % sukoonWords.length;
-        });
-        setOpacity(1);
-      }, 300);
-    }, 2200);
-    return () => clearInterval(interval);
+    let interval: ReturnType<typeof setInterval> | null = null;
+
+    const startInterval = () => {
+      if (interval) return;
+      interval = setInterval(() => {
+        setOpacity(0);
+        setTimeout(() => {
+          setIndex((prev) => {
+            if (prev === -1) return 1; // Initial state transitions to index 1 (Hindi) on first tick
+            return (prev + 1) % sukoonWords.length;
+          });
+          setOpacity(1);
+        }, 300);
+      }, 2200);
+    };
+
+    const stopInterval = () => {
+      if (interval) {
+        clearInterval(interval);
+        interval = null;
+      }
+    };
+
+    const handleVisibility = () => {
+      if (document.hidden) {
+        stopInterval();
+      } else {
+        startInterval();
+      }
+    };
+
+    if (!document.hidden) {
+      startInterval();
+    }
+
+    document.addEventListener('visibilitychange', handleVisibility);
+    return () => {
+      stopInterval();
+      document.removeEventListener('visibilitychange', handleVisibility);
+    };
   }, []);
 
   const currentWord = index === -1 ? 'सुकून' : sukoonWords[index].word;

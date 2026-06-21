@@ -1,10 +1,12 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useModal } from '@/context/ModalContext';
+import { trackEvent } from '@/utils/analytics';
 import styles from './EnquiryForm.module.scss';
 
-// ⚠️  Replace with your actual Formspree form ID after signing up at formspree.io
-const FORMSPREE_ENDPOINT = 'https://formspree.io/f/YOUR_FORM_ID';
+// Dynamically use Formspree form ID from environment variables
+const FORMSPREE_FORM_ID = import.meta.env.VITE_FORMSPREE_FORM_ID || 'mwvdezao';
+const FORMSPREE_ENDPOINT = `https://formspree.io/f/${FORMSPREE_FORM_ID}`;
 const WHATSAPP_PRIMARY = '917032394455';
 const WHATSAPP_SECONDARY = '919689833000';
 
@@ -68,6 +70,9 @@ const EnquiryForm: React.FC = () => {
     e.preventDefault();
     if (status === 'submitting') return;
     setStatus('submitting');
+
+    // Track lead submission event
+    trackEvent('submit_enquiry_form', 'lead_generation', form.destination || 'General');
 
     try {
       const res = await fetch(FORMSPREE_ENDPOINT, {
@@ -289,6 +294,7 @@ const EnquiryForm: React.FC = () => {
                       target="_blank"
                       rel="noopener noreferrer"
                       className={styles.waBtn}
+                      onClick={() => trackEvent('click_whatsapp_enquiry', 'lead_generation', form.destination || 'General')}
                     >
                       <WhatsAppIcon /> WhatsApp Us
                     </a>

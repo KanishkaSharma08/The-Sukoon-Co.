@@ -17,16 +17,26 @@
     <!-- Replace 'YOUR_VERIFICATION_CODE' with the code from Search Console -->
     <meta name="google-site-verification" content="YOUR_VERIFICATION_CODE" />
 
-    <!-- Google tag (gtag.js) GA4 Placeholder -->
-    <!-- Replace 'G-PLACEHOLDER' with your real Measurement ID (e.g. G-E6S8Z1P4LM) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-PLACEHOLDER"></script>
+    <!-- Google tag (gtag.js) GA4 -->
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-PLACEHOLDER', {
-        page_path: window.location.pathname
-      });
+      let gaId = "%VITE_GA_MEASUREMENT_ID%";
+      if (!gaId || gaId === "%" + "VITE_GA_MEASUREMENT_ID" + "%" || gaId.trim() === "") {
+        gaId = "G-D0S9N65HQ7"; // Fallback to live GA Tracking ID
+      }
+      
+      if (gaId && gaId !== "YOUR_GA_ID" && gaId.trim() !== "") {
+        const script = document.createElement('script');
+        script.async = true;
+        script.src = "https://www.googletagmanager.com/gtag/js?id=" + gaId;
+        document.head.appendChild(script);
+
+        window.dataLayer = window.dataLayer || [];
+        window.gtag = function(){window.dataLayer.push(arguments);}
+        window.gtag('js', new Date());
+        window.gtag('config', gaId, {
+          page_path: window.location.pathname
+        });
+      }
     </script>
 
     <!-- Open Graph -->

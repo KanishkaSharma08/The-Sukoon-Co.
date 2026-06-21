@@ -79,3 +79,132 @@
     display: none;
   }
 }
+
+// Mobile Hamburger Button
+.hamburger {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  width: 24px;
+  height: 16px;
+  position: relative;
+  z-index: 210;
+  flex-direction: column;
+  justify-content: space-between;
+
+  @media (max-width: $bp-mobile) {
+    display: flex;
+  }
+}
+
+.bar {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background: var(--white);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+              opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+              background-color 0.3s;
+
+  .scrolled & {
+    background: var(--white);
+  }
+}
+
+// Animate hamburger to X on open
+.open {
+  .bar:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+  .bar:nth-child(2) {
+    opacity: 0;
+  }
+  .bar:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+}
+
+// Mobile Drawer Overlay
+.drawer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 190;
+  background: rgba(10, 10, 10, 0.98);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-16px);
+  transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+              transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  @media (min-width: $bp-mobile) {
+    display: none;
+  }
+}
+
+.drawerOpen {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.drawerInner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 48px;
+  width: 100%;
+  padding: 0 40px;
+}
+
+.drawerLinks {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 28px;
+  padding: 0;
+  margin: 0;
+
+  a {
+    font-size: 18px;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.6);
+    text-decoration: none;
+    transition: color 0.2s;
+
+    &:hover, &.current {
+      color: var(--gold);
+    }
+  }
+}
+
+.drawerCta {
+  font-family: var(--font);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--black);
+  background: var(--white);
+  padding: 16px 40px;
+  text-decoration: none;
+  transition: background 0.2s, transform 0.2s;
+  text-align: center;
+
+  &:hover {
+    background: var(--gold);
+  }
+}

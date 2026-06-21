@@ -30,6 +30,8 @@ const Footer: React.FC = () => {
           Plan a Journey
         </button>
         <a href="mailto:hello@thesukoonco.in">Contact</a>
+        <Link to="/privacy">Privacy Policy</Link>
+        <Link to="/terms">Terms &amp; Conditions</Link>
       </div>
 
       <div className={styles.bottom}>

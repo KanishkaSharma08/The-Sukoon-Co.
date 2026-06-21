@@ -105,6 +105,16 @@ body {
   gap: 14px;
   align-items: center;
   justify-content: center;
+
+  @media (max-width: $bp-mobile) {
+    flex-direction: column;
+    width: 100%;
+
+    a, button {
+      width: 100%;
+      text-align: center;
+    }
+  }
 }
 
 .ph-label {
@@ -124,4 +134,9 @@ body {
     height: 1px;
     background: var(--gold);
   }
+}
+
+// Global rule to pause CSS animations when tab is hidden (in background)
+.page-hidden * {
+  animation-play-state: paused !important;
 }

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { trackEvent } from '@/utils/analytics';
 import styles from './WhatsAppWidget.module.scss';
 
 const WHATSAPP_PRIMARY = '917032394455';
@@ -17,6 +18,7 @@ const WhatsAppWidget: React.FC = () => {
       rel="noopener noreferrer"
       className={styles.widget}
       aria-label="Chat with us on WhatsApp"
+      onClick={() => trackEvent('click_whatsapp_floating', 'lead_generation', 'floating_widget')}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >

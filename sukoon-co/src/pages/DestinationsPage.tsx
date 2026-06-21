@@ -4,6 +4,7 @@ import RegionSection from '@/components/destinations/RegionSection/RegionSection
 import RevealWrapper from '@/components/ui/RevealWrapper/RevealWrapper';
 import { regions } from '@/data/destinations';
 import PageMeta from '@/components/ui/PageMeta/PageMeta';
+import { trackEvent } from '@/utils/analytics';
 import styles from './DestinationsPage.module.scss';
 
 const DestinationsPage: React.FC = () => {
@@ -45,12 +46,20 @@ const DestinationsPage: React.FC = () => {
         </RevealWrapper>
         <div className={styles.btnGroup}>
           <RevealWrapper delay={3}>
-            <a href="https://wa.me/91XXXXXXXXXX" className={styles.btnP}>
+            <a
+              href="https://wa.me/917032394455"
+              className={styles.btnP}
+              onClick={() => trackEvent('click_whatsapp_cta', 'lead_generation', 'destinations_page_cta')}
+            >
               WhatsApp Us
             </a>
           </RevealWrapper>
           <RevealWrapper delay={3}>
-            <a href="mailto:hello@thesukoonco.in" className={styles.btnS}>
+            <a
+              href="mailto:hello@thesukoonco.in"
+              className={styles.btnS}
+              onClick={() => trackEvent('click_email_cta', 'lead_generation', 'destinations_page_cta')}
+            >
               Email Us
             </a>
           </RevealWrapper>

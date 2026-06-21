@@ -322,9 +322,19 @@
   align-items: center;
   justify-content: center;
 
-  @media (max-width: 480px) {
+  @media (max-width: $bp-mobile) {
     flex-direction: column;
-    gap: 10px;
+    width: 100%;
+
+    & > * {
+      width: 100%;
+    }
+
+    a, button {
+      width: 100%;
+      text-align: center;
+      display: block;
+    }
   }
 }
 

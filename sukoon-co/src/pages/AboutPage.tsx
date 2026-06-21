@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import PageHero from '@/components/ui/PageHero/PageHero';
 import RevealWrapper from '@/components/ui/RevealWrapper/RevealWrapper';
 import PageMeta from '@/components/ui/PageMeta/PageMeta';
+import { trackEvent } from '@/utils/analytics';
 import styles from './AboutPage.module.scss';
 
 const AboutPage: React.FC = () => {
@@ -210,12 +211,20 @@ const AboutPage: React.FC = () => {
         </RevealWrapper>
         <div className={styles.btnGroup}>
           <RevealWrapper delay={3}>
-            <a href="https://wa.me/91XXXXXXXXXX" className={styles.btnP}>
+            <a
+              href="https://wa.me/917032394455"
+              className={styles.btnP}
+              onClick={() => trackEvent('click_whatsapp_cta', 'lead_generation', 'about_page_cta')}
+            >
               WhatsApp Us
             </a>
           </RevealWrapper>
           <RevealWrapper delay={3}>
-            <a href="mailto:hello@thesukoonco.in" className={styles.btnS}>
+            <a
+              href="mailto:hello@thesukoonco.in"
+              className={styles.btnS}
+              onClick={() => trackEvent('click_email_cta', 'lead_generation', 'about_page_cta')}
+            >
               Email Us
             </a>
           </RevealWrapper>

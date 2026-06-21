@@ -1,5 +1,6 @@
 import React from 'react';
 import { useModal } from '@/context/ModalContext';
+import { trackEvent } from '@/utils/analytics';
 import styles from './CtaSection.module.scss';
 
 const CtaSection: React.FC = () => {
@@ -26,7 +27,10 @@ const CtaSection: React.FC = () => {
           <button
             id="cta-enquire-btn"
             className="btn-p"
-            onClick={() => openEnquiry()}
+            onClick={() => {
+              openEnquiry();
+              trackEvent('click_cta_plan', 'engagement', 'home_footer_cta');
+            }}
           >
             Plan Your Journey
           </button>
@@ -35,6 +39,7 @@ const CtaSection: React.FC = () => {
             target="_blank"
             rel="noopener noreferrer"
             className="btn-s"
+            onClick={() => trackEvent('click_whatsapp_cta', 'lead_generation', 'home_footer_whatsapp')}
           >
             WhatsApp Us
           </a>
