@@ -32,9 +32,14 @@
   font-size: 26vw;
   font-weight: 800;
   letter-spacing: -0.04em;
-  color: rgba(255, 255, 255, 0.12);
+  color: rgba(255, 255, 255, 0.06); // Lowered slightly on desktop for better readability
   animation: ctaScroll 40s linear infinite;
   will-change: transform;
+
+  @media (max-width: $bp-mobile) {
+    font-size: 32vw;
+    color: rgba(255, 255, 255, 0.025); // Faint background watermark to prevent text conflict
+  }
 }
 
 .content {

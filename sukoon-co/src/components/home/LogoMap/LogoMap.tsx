@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useModal } from '@/context/ModalContext';
 import RevealWrapper from '@/components/ui/RevealWrapper/RevealWrapper';
@@ -172,8 +172,16 @@ const zoneColors: Record<Zone, string> = {
 
 const LogoMap: React.FC = () => {
   const [activeZone, setActiveZone] = useState<Zone | null>(null);
+  const [isMobile, setIsMobile] = useState(false);
   const { openModal } = useModal();
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth <= 900);
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   const activate = (zone: Zone) => setActiveZone(zone);
   const deactivate = () => setActiveZone(null);
@@ -191,8 +199,17 @@ const LogoMap: React.FC = () => {
     }
   };
 
+  const handleZoneClick = (zone: Zone, defaultItineraryId: string) => {
+    if (isMobile) {
+      setActiveZone(prev => prev === zone ? null : zone);
+    } else {
+      goTo(defaultItineraryId);
+    }
+  };
+
   const leftPanels = panels.filter((p) => p.side === 'left');
   const rightPanels = panels.filter((p) => p.side === 'right');
+  const activePanel = panels.find((p) => p.zone === activeZone);
 
   return (
     <section className={styles.section} id="logo-section">
@@ -203,7 +220,7 @@ const LogoMap: React.FC = () => {
         Six worlds. One mark.
       </RevealWrapper>
       <RevealWrapper as="p" delay={2} className={styles.sub}>
-        Hover over each panel to explore where we take you.
+        {isMobile ? "Tap any zone on the mark to explore where we take you." : "Hover over each panel to explore where we take you."}
       </RevealWrapper>
 
       <RevealWrapper delay={2} className={styles.stage}>
@@ -214,8 +231,8 @@ const LogoMap: React.FC = () => {
               key={panel.id}
               className={`${styles.lzPanel} ${activeZone === panel.zone ? styles.active : ''}`}
               style={{ top: panel.topPercent }}
-              onMouseEnter={() => activate(panel.zone)}
-              onMouseLeave={deactivate}
+              onMouseEnter={() => !isMobile && activate(panel.zone)}
+              onMouseLeave={() => !isMobile && deactivate()}
             >
               <div className={styles.panelPopup}>
                 <div className={styles.popupTitle}>
@@ -271,39 +288,39 @@ const LogoMap: React.FC = () => {
           {/* Hit zones */}
           <div
             className={`${styles.lz} ${styles.lzMountains}`}
-            onMouseEnter={() => activate('mountains')}
-            onMouseLeave={deactivate}
-            onClick={() => goTo('ladakh')}
+            onMouseEnter={() => !isMobile && activate('mountains')}
+            onMouseLeave={() => !isMobile && deactivate()}
+            onClick={() => handleZoneClick('mountains', 'ladakh')}
           />
           <div
             className={`${styles.lz} ${styles.lzTemples}`}
-            onMouseEnter={() => activate('temples')}
-            onMouseLeave={deactivate}
-            onClick={() => goTo('banaras')}
+            onMouseEnter={() => !isMobile && activate('temples')}
+            onMouseLeave={() => !isMobile && deactivate()}
+            onClick={() => handleZoneClick('temples', 'banaras')}
           />
           <div
             className={`${styles.lz} ${styles.lzRajasthan}`}
-            onMouseEnter={() => activate('rajasthan')}
-            onMouseLeave={deactivate}
-            onClick={() => goTo('rajasthan')}
+            onMouseEnter={() => !isMobile && activate('rajasthan')}
+            onMouseLeave={() => !isMobile && deactivate()}
+            onClick={() => handleZoneClick('rajasthan', 'rajasthan')}
           />
           <div
             className={`${styles.lz} ${styles.lzSafari}`}
-            onMouseEnter={() => activate('safari')}
-            onMouseLeave={deactivate}
-            onClick={() => goTo('mp')}
+            onMouseEnter={() => !isMobile && activate('safari')}
+            onMouseLeave={() => !isMobile && deactivate()}
+            onClick={() => handleZoneClick('safari', 'mp')}
           />
           <div
             className={`${styles.lz} ${styles.lzGoa}`}
-            onMouseEnter={() => activate('goa')}
-            onMouseLeave={deactivate}
-            onClick={() => goTo('rajasthan')}
+            onMouseEnter={() => !isMobile && activate('goa')}
+            onMouseLeave={() => !isMobile && deactivate()}
+            onClick={() => handleZoneClick('goa', 'rajasthan')}
           />
           <div
             className={`${styles.lz} ${styles.lzKerala}`}
-            onMouseEnter={() => activate('kerala')}
-            onMouseLeave={deactivate}
-            onClick={() => goTo('tirupati')}
+            onMouseEnter={() => !isMobile && activate('kerala')}
+            onMouseLeave={() => !isMobile && deactivate()}
+            onClick={() => handleZoneClick('kerala', 'tirupati')}
           />
         </div>
 
@@ -314,8 +331,8 @@ const LogoMap: React.FC = () => {
               key={panel.id}
               className={`${styles.lzPanel} ${activeZone === panel.zone ? styles.active : ''}`}
               style={{ top: panel.topPercent }}
-              onMouseEnter={() => activate(panel.zone)}
-              onMouseLeave={deactivate}
+              onMouseEnter={() => !isMobile && activate(panel.zone)}
+              onMouseLeave={() => !isMobile && deactivate()}
             >
               <div
                 className={styles.connectorLine}
@@ -357,6 +374,39 @@ const LogoMap: React.FC = () => {
         </div>
 
       </RevealWrapper>
+
+      {/* MOBILE DETAIL PANEL */}
+      {isMobile && activePanel && (
+        <div className={styles.mobileDetail}>
+          <div className={styles.mobileDetailHeader}>
+            <span className={styles.mobileDetailIcon}>{activePanel.icon}</span>
+            <h3>{activePanel.title}</h3>
+          </div>
+          <div className={styles.mobileDetailItems}>
+            {activePanel.tags.map((tag) => (
+              <button
+                key={tag.label}
+                className={`${styles.mobileDestTag} ${tag.status === 'live' ? styles.live : styles.soon}`}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  handleTagClick(tag);
+                }}
+                disabled={tag.status === 'soon'}
+              >
+                {tag.status === 'live' && <span className={styles.arr}>→</span>}
+                {tag.label}
+                {tag.status === 'soon' && <span className={styles.pill}>Soon</span>}
+              </button>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {isMobile && !activeZone && (
+        <div className={styles.mobileHint}>
+          Tap any zone on the mark above to explore destinations.
+        </div>
+      )}
     </section>
   );
 };
