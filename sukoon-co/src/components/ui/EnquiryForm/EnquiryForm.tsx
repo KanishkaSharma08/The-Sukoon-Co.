@@ -7,8 +7,8 @@ import styles from './EnquiryForm.module.scss';
 // Dynamically use Formspree form ID from environment variables
 const FORMSPREE_FORM_ID = import.meta.env.VITE_FORMSPREE_FORM_ID || 'mwvdezao';
 const FORMSPREE_ENDPOINT = `https://formspree.io/f/${FORMSPREE_FORM_ID}`;
-const WHATSAPP_PRIMARY = '917032394455';
-const WHATSAPP_SECONDARY = '919689833000';
+const WHATSAPP_PRIMARY = '919689833000';
+const WHATSAPP_SECONDARY = '917032394455';
 
 const DESTINATION_OPTIONS = [
   'Not sure yet — help me decide',

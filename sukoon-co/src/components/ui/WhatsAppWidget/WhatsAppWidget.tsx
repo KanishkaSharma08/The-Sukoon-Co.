@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { trackEvent } from '@/utils/analytics';
 import styles from './WhatsAppWidget.module.scss';
 
-const WHATSAPP_PRIMARY = '917032394455';
+const WHATSAPP_PRIMARY = '919689833000';
 const DEFAULT_MESSAGE = "Hi, I'd like to know more about a customised trip with The Sukoon Co.";
 
 const WhatsAppWidget: React.FC = () => {

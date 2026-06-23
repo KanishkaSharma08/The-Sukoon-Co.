@@ -47,7 +47,7 @@ const DestinationsPage: React.FC = () => {
         <div className={styles.btnGroup}>
           <RevealWrapper delay={3}>
             <a
-              href="https://wa.me/917032394455"
+              href="https://wa.me/919689833000"
               className={styles.btnP}
               onClick={() => trackEvent('click_whatsapp_cta', 'lead_generation', 'destinations_page_cta')}
             >
