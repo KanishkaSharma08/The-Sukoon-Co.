@@ -96,7 +96,7 @@ const panels: PanelData[] = [
     icon: <FortIcon />,
     title: 'Forts & Palaces',
     tags: [
-      { label: 'Rajasthan', status: 'live', itineraryId: 'rajasthan' },
+      { label: 'Rajasthan', status: 'soon' },
       { label: 'Orchha', status: 'soon' },
       { label: 'Gwalior', status: 'soon' },
     ],
@@ -124,8 +124,8 @@ const panels: PanelData[] = [
     icon: <TempleIcon />,
     title: 'Mughal & Heritage',
     tags: [
-      { label: 'Madhya Pradesh', status: 'live', itineraryId: 'mp' },
-      { label: 'Banaras', status: 'live', itineraryId: 'banaras' },
+      { label: 'Madhya Pradesh', status: 'soon' },
+      { label: 'Banaras', status: 'soon' },
       { label: 'Agra', status: 'soon' },
       { label: 'Delhi', status: 'soon' },
     ],
@@ -138,7 +138,7 @@ const panels: PanelData[] = [
     icon: <SafariIcon />,
     title: 'Safaris & Wildlife',
     tags: [
-      { label: 'Madhya Pradesh', status: 'live', itineraryId: 'mp' },
+      { label: 'Madhya Pradesh', status: 'soon' },
       { label: 'Jim Corbett', status: 'soon' },
       { label: 'Kaziranga', status: 'soon' },
       { label: 'Sundarbans', status: 'soon' },

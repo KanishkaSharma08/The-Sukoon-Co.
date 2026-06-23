@@ -11,9 +11,22 @@ const Footer: React.FC = () => {
       <div>
         <div className={styles.brand}>The Sukoon Co</div>
         <p className={styles.tag}>
-          Boutique customised travel across India. No fixed departures. Only yours.{'\n\n'}
-          thesukoonco.in · hello@thesukoonco.in{'\n'}@thesukoonco
+          Boutique customised travel across India. No fixed departures. Only yours.
         </p>
+        <div className={styles.contactInfo}>
+          <a href="https://www.thesukoonco.in" target="_blank" rel="noopener noreferrer" className={styles.contactLink}>
+            thesukoonco.in
+          </a>
+          <span className={styles.separator}>·</span>
+          <a href="mailto:team@sukoonco.com" className={styles.contactLink}>
+            team@sukoonco.com
+          </a>
+          <div className={styles.socialRow}>
+            <a href="https://instagram.com/thesukoonco.in" target="_blank" rel="noopener noreferrer" className={styles.contactLink}>
+              @thesukoonco.in
+            </a>
+          </div>
+        </div>
       </div>
 
       {/* Center logo matching header */}
@@ -29,7 +42,7 @@ const Footer: React.FC = () => {
         <button className={styles.enquiryLink} onClick={() => openEnquiry()}>
           Plan a Journey
         </button>
-        <a href="mailto:hello@thesukoonco.in">Contact</a>
+        <a href="mailto:team@sukoonco.com">Contact</a>
         <Link to="/privacy">Privacy Policy</Link>
         <Link to="/terms">Terms &amp; Conditions</Link>
       </div>

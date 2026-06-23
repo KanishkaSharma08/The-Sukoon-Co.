@@ -30,7 +30,6 @@ const ItineraryCard: React.FC<ItineraryCardProps> = ({ itinerary, delay }) => {
         <span className={styles.region}>{itinerary.region}</span>
         <div className={styles.name}>{itinerary.name}</div>
         <div className={styles.meta}>
-          <span>{itinerary.cardDuration || itinerary.duration}</span>
           <span>{itinerary.cardRoute || itinerary.route}</span>
         </div>
         <button

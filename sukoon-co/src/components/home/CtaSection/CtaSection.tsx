@@ -35,7 +35,7 @@ const CtaSection: React.FC = () => {
             Plan Your Journey
           </button>
           <a
-            href={`https://wa.me/917032394455?text=${encodeURIComponent("Hi, I'd like to enquire about a customised trip with The Sukoon Co.")}`}
+            href={`https://wa.me/919689833000?text=${encodeURIComponent("Hi, I'd like to enquire about a customised trip with The Sukoon Co.")}`}
             target="_blank"
             rel="noopener noreferrer"
             className="btn-s"
@@ -44,12 +44,19 @@ const CtaSection: React.FC = () => {
             WhatsApp Us
           </a>
         </div>
-        <p className={styles.contact}>
-          Or call us:{' '}
-          <a href="tel:+917032394455">+91 70323 94455</a>
-          {' · '}
-          <a href="tel:+919689833000">+91 96898 33000</a>
-        </p>
+        <div className={styles.contactBlock}>
+          <span className={styles.contactLabel}>Or call us:</span>
+          <div className={styles.contactButtons}>
+            <a href="tel:+919689833000" className={styles.phoneBtn}>
+              <span className={styles.phoneNum}>+91 96898 33000</span>
+              <span className={styles.phoneTag}>Primary</span>
+            </a>
+            <a href="tel:+917032394455" className={styles.phoneBtn}>
+              <span className={styles.phoneNum}>+91 70323 94455</span>
+              <span className={styles.phoneTag}>Secondary</span>
+            </a>
+          </div>
+        </div>
       </div>
     </section>
   );

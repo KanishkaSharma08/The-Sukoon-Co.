@@ -24,6 +24,10 @@
   overflow: hidden;
   pointer-events: none;
   line-height: 1;
+
+  @media (max-width: $bp-mobile) {
+    top: 30%;
+  }
 }
 
 .marquee {
@@ -32,14 +36,9 @@
   font-size: 26vw;
   font-weight: 800;
   letter-spacing: -0.04em;
-  color: rgba(255, 255, 255, 0.06); // Lowered slightly on desktop for better readability
+  color: rgba(255, 255, 255, 0.06);
   animation: ctaScroll 40s linear infinite;
   will-change: transform;
-
-  @media (max-width: $bp-mobile) {
-    font-size: 32vw;
-    color: rgba(255, 255, 255, 0.025); // Faint background watermark to prevent text conflict
-  }
 }
 
 .content {
@@ -70,18 +69,73 @@
   line-height: 1.8;
 }
 
-.contact {
-  margin-top: 24px;
-  font-size: 12px;
-  font-weight: 300;
-  color: rgba(255, 255, 255, 0.3);
-  letter-spacing: 0.04em;
+.contactBlock {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
 
-  a {
-    color: rgba(255, 255, 255, 0.55);
-    text-decoration: none;
-    transition: color 0.2s;
+.contactLabel {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.35);
+}
 
-    &:hover { color: var(--gold); }
+.contactButtons {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  @media (max-width: 480px) {
+    flex-direction: column;
+    width: 100%;
+    align-items: stretch;
+    gap: 10px;
   }
+}
+
+.phoneBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 20px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 2px;
+  text-decoration: none;
+  transition: all 0.25s ease;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(196, 168, 130, 0.4);
+    transform: translateY(-2px);
+  }
+
+  @media (max-width: 480px) {
+    justify-content: space-between;
+  }
+}
+
+.phoneNum {
+  font-family: var(--font);
+  font-size: 13px;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.8);
+  letter-spacing: 0.04em;
+}
+
+.phoneTag {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gold);
+  background: rgba(196, 168, 130, 0.1);
+  padding: 3px 8px;
+  border-radius: 2px;
 }

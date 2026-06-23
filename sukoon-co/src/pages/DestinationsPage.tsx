@@ -56,7 +56,7 @@ const DestinationsPage: React.FC = () => {
           </RevealWrapper>
           <RevealWrapper delay={3}>
             <a
-              href="mailto:hello@thesukoonco.in"
+              href="mailto:team@sukoonco.com"
               className={styles.btnS}
               onClick={() => trackEvent('click_email_cta', 'lead_generation', 'destinations_page_cta')}
             >

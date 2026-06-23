@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import RevealWrapper from '@/components/ui/RevealWrapper/RevealWrapper';
 import ItineraryCard from '@/components/home/ItineraryCard/ItineraryCard';
 import { itineraries } from '@/data/itineraries';
@@ -9,6 +10,19 @@ const Itineraries: React.FC = () => {
     e.preventDefault();
     document.getElementById('cta')?.scrollIntoView({ behavior: 'smooth' });
   };
+
+  // Filter to show exactly the 5 specific itineraries in order
+  const HOME_ITI_IDS = ['ladakh', 'zanskar', 'himachal', 'kashmir', 'tirupati'];
+  const homeItineraries = HOME_ITI_IDS.map(id => {
+    const found = itineraries.find(iti => iti.id === id);
+    if (found) {
+      return {
+        ...found,
+        isWide: id === 'ladakh', // Make Ladakh wide to span the top row beautifully
+      };
+    }
+    return null;
+  }).filter(Boolean);
 
   return (
     <section className={styles.section} id="itineraries">
@@ -23,10 +37,16 @@ const Itineraries: React.FC = () => {
       </RevealWrapper>
 
       <div className={styles.grid}>
-        {itineraries.map((iti, i) => (
-          <ItineraryCard key={iti.id} itinerary={iti} delay={i % 2 === 0 ? 1 : 2} />
+        {homeItineraries.map((iti, i) => (
+          iti && <ItineraryCard key={iti.id} itinerary={iti} delay={(i % 2 === 0 ? 1 : 2) as any} />
         ))}
       </div>
+
+      <RevealWrapper delay={2} className={styles.viewAllContainer}>
+        <Link to="/destinations" className={styles.viewAllBtn}>
+          Explore All Customised Journeys &amp; Regions →
+        </Link>
+      </RevealWrapper>
     </section>
   );
 };

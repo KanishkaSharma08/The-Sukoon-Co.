@@ -47,7 +47,7 @@ const PrivacyPage: React.FC = () => {
 
           <h2 style={{ color: 'var(--white)', fontSize: '24px', marginBottom: '24px', letterSpacing: '-0.02em' }}>4. Your Rights</h2>
           <p style={{ marginBottom: '32px' }}>
-            You can request details about the personal data we hold about you or request its absolute removal from our records at any time. Simply write to us at <a href="mailto:hello@thesukoonco.in" style={{ color: 'var(--gold)' }}>hello@thesukoonco.in</a>.
+            You can request details about the personal data we hold about you or request its absolute removal from our records at any time. Simply write to us at <a href="mailto:team@sukoonco.com" style={{ color: 'var(--gold)' }}>team@sukoonco.com</a>.
           </p>
         </div>
       </section>

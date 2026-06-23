@@ -25,6 +25,28 @@ const DESTINATION_OPTIONS = [
   'Multiple Regions / Grand Tour',
 ];
 
+const matchDestination = (input: string): string => {
+  if (!input) return '';
+  const val = input.toLowerCase().trim();
+  
+  if (val.includes('rajasthan') || val.includes('heartland')) return 'Rajasthan — Forts & Palaces';
+  if (val.includes('ladakh') || val.includes('peaks')) return 'Ladakh — High Altitude Desert';
+  if (val.includes('kashmir')) return 'Kashmir — Valley & Dal Lake';
+  if (val.includes('kerala') || val.includes('backwaters')) return 'Kerala — Backwaters & Hills';
+  if (val.includes('goa') || val.includes('coast')) return 'Goa — Coast & Culture';
+  if (val.includes('spiti') || val.includes('himachal') || val.includes('zanskar') || val.includes('frozen') || val.includes('valley to valley')) return 'Spiti Valley — Remote Mountains';
+  if (val.includes('varanasi') || val.includes('banaras') || val.includes('light')) return 'Varanasi — Sacred Ghats';
+  if (val.includes('ranthambore') || val.includes('safari') || val.includes('mp') || val.includes('madhya pradesh') || val.includes('tiger')) return 'Ranthambore — Tiger Safari';
+  if (val.includes('corbett') || val.includes('jim')) return 'Jim Corbett — Wildlife';
+  if (val.includes('andaman')) return 'Andaman Islands — Beaches';
+  
+  // Try to match any option that contains the text
+  const found = DESTINATION_OPTIONS.find(opt => opt.toLowerCase().includes(val));
+  if (found) return found;
+  
+  return 'Not sure yet — help me decide';
+};
+
 const EnquiryForm: React.FC = () => {
   const { enquiryOpen, closeEnquiry, enquiryDestination } = useModal();
   const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
@@ -45,7 +67,7 @@ const EnquiryForm: React.FC = () => {
     if (enquiryOpen) {
       setForm(prev => ({
         ...prev,
-        destination: enquiryDestination || '',
+        destination: enquiryDestination ? matchDestination(enquiryDestination) : '',
       }));
       setStatus('idle');
       // Focus first field after animation
@@ -69,6 +91,13 @@ const EnquiryForm: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (status === 'submitting') return;
+
+    // JavaScript fallback validation for required fields
+    if (!form.name.trim() || !form.email.trim() || !form.phone.trim() || !form.destination.trim() || !form.dates.trim() || !form.groupSize.trim()) {
+      setStatus('error');
+      return;
+    }
+
     setStatus('submitting');
 
     // Track lead submission event
@@ -168,7 +197,7 @@ const EnquiryForm: React.FC = () => {
                   </button>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit} noValidate>
+                <form onSubmit={handleSubmit}>
                   <div className={styles.row}>
                     <div className={styles.field}>
                       <label htmlFor="eq-name" className={styles.label}>Your Name *</label>
@@ -201,11 +230,12 @@ const EnquiryForm: React.FC = () => {
 
                   <div className={styles.row}>
                     <div className={styles.field}>
-                      <label htmlFor="eq-phone" className={styles.label}>Phone / WhatsApp</label>
+                      <label htmlFor="eq-phone" className={styles.label}>Phone / WhatsApp *</label>
                       <input
                         id="eq-phone"
                         name="phone"
                         type="tel"
+                        required
                         placeholder="+91 98765 43210"
                         className={styles.input}
                         value={form.phone}
@@ -213,10 +243,11 @@ const EnquiryForm: React.FC = () => {
                       />
                     </div>
                     <div className={styles.field}>
-                      <label htmlFor="eq-destination" className={styles.label}>Destination Interest</label>
+                      <label htmlFor="eq-destination" className={styles.label}>Destination Interest *</label>
                       <select
                         id="eq-destination"
                         name="destination"
+                        required
                         className={styles.select}
                         value={form.destination}
                         onChange={handleChange}
@@ -231,11 +262,12 @@ const EnquiryForm: React.FC = () => {
 
                   <div className={styles.row}>
                     <div className={styles.field}>
-                      <label htmlFor="eq-dates" className={styles.label}>Preferred Travel Dates</label>
+                      <label htmlFor="eq-dates" className={styles.label}>Preferred Travel Dates *</label>
                       <input
                         id="eq-dates"
                         name="dates"
                         type="text"
+                        required
                         placeholder="E.g. October 2025, flexible"
                         className={styles.input}
                         value={form.dates}
@@ -243,11 +275,12 @@ const EnquiryForm: React.FC = () => {
                       />
                     </div>
                     <div className={styles.field}>
-                      <label htmlFor="eq-group" className={styles.label}>Group Size</label>
+                      <label htmlFor="eq-group" className={styles.label}>Group Size *</label>
                       <input
                         id="eq-group"
                         name="groupSize"
                         type="text"
+                        required
                         placeholder="E.g. 2 adults, 1 child"
                         className={styles.input}
                         value={form.groupSize}

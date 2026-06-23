@@ -50,3 +50,33 @@
     grid-template-columns: 1fr;
   }
 }
+
+.viewAllContainer {
+  display: flex;
+  justify-content: center;
+  margin-top: 48px;
+
+  @media (max-width: $bp-mobile) {
+    margin-top: 36px;
+  }
+}
+
+.viewAllBtn {
+  font-family: var(--font);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--black);
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  padding: 18px 44px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  background: transparent;
+
+  &:hover {
+    color: var(--white);
+    background: var(--black);
+    border-color: var(--black);
+  }
+}

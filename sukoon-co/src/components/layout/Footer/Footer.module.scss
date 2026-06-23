@@ -34,6 +34,10 @@
   display: flex;
   align-items: center;
   justify-content: center;
+
+  @media (max-width: $bp-mobile) {
+    display: none;
+  }
 }
 
 .logo {
@@ -100,6 +104,31 @@
   color: rgba(255, 255, 255, 0.2);
 }
 
-.enquiryLink {
-  // Styles merged into .links a, above
+.contactInfo {
+  margin-top: 18px;
+  font-size: 13px;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.35);
+  line-height: 1.8;
+}
+
+.contactLink {
+  color: rgba(255, 255, 255, 0.35);
+  text-decoration: none;
+  transition: color 0.2s ease;
+  font-family: var(--font);
+
+  &:hover {
+    color: var(--white);
+    text-decoration: underline;
+  }
+}
+
+.separator {
+  margin: 0 8px;
+  color: rgba(255, 255, 255, 0.15);
+}
+
+.socialRow {
+  margin-top: 4px;
 }

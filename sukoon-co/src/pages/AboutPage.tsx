@@ -221,7 +221,7 @@ const AboutPage: React.FC = () => {
           </RevealWrapper>
           <RevealWrapper delay={3}>
             <a
-              href="mailto:hello@thesukoonco.in"
+              href="mailto:team@sukoonco.com"
               className={styles.btnS}
               onClick={() => trackEvent('click_email_cta', 'lead_generation', 'about_page_cta')}
             >

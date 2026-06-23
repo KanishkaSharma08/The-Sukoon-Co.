@@ -39,7 +39,7 @@ const PageMeta: React.FC<PageMetaProps> = ({ title, description, canonical, ogIm
       name: 'The Sukoon Co',
       url: BASE_URL,
       telephone: ['+917032394455', '+919689833000'],
-      email: 'hello@thesukoonco.in',
+      email: 'team@sukoonco.com',
       description: 'Boutique customised travel across India. No fixed departures. Only yours.',
       areaServed: 'India',
       image: OG_IMAGE,
