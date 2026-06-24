@@ -49,6 +49,10 @@ const ItineraryModal: React.FC = () => {
                 <span>{itinerary.route}</span>
               </div>
 
+              {itinerary.priceString && (
+                <div className={styles.price}>{itinerary.priceString}</div>
+              )}
+
               <div className={styles.stats}>
                 {itinerary.stats.map((s) => (
                   <div className={styles.stat} key={s.label}>

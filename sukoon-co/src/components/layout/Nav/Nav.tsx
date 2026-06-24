@@ -31,7 +31,7 @@ const Nav: React.FC = () => {
     <>
       <nav className={`${styles.nav} ${scrolled || menuOpen ? styles.scrolled : ''}`} id="nav">
         <Link to="/" className={styles.logo}>
-          The Sukoon Co
+          The Sukoon Co.
         </Link>
         
         {/* Desktop Links */}
@@ -42,17 +42,12 @@ const Nav: React.FC = () => {
             </Link>
           </li>
           <li>
-            <Link to="/#itineraries" className={isActive('/#itineraries') ? styles.current : ''}>
-              Itineraries
-            </Link>
-          </li>
-          <li>
             <Link to="/about" className={isActive('/about') ? styles.current : ''}>
               About
             </Link>
           </li>
           <li>
-            <Link to="/stories" className={isActive('/stories') ? styles.current : ''}>
+            <Link to="/blogs" className={isActive('/blogs') ? styles.current : ''}>
               Stories
             </Link>
           </li>
@@ -85,17 +80,12 @@ const Nav: React.FC = () => {
               </Link>
             </li>
             <li>
-              <Link to="/#itineraries" className={isActive('/#itineraries') ? styles.current : ''}>
-                Itineraries
-              </Link>
-            </li>
-            <li>
               <Link to="/about" className={isActive('/about') ? styles.current : ''}>
                 About
               </Link>
             </li>
             <li>
-              <Link to="/stories" className={isActive('/stories') ? styles.current : ''}>
+              <Link to="/blogs" className={isActive('/blogs') ? styles.current : ''}>
                 Stories
               </Link>
             </li>

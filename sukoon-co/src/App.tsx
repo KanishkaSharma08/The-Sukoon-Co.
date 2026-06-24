@@ -5,6 +5,7 @@ import Nav from '@/components/layout/Nav/Nav';
 import Footer from '@/components/layout/Footer/Footer';
 import EnquiryForm from '@/components/ui/EnquiryForm/EnquiryForm';
 import WhatsAppWidget from '@/components/ui/WhatsAppWidget/WhatsAppWidget';
+import ItineraryModal from '@/components/home/ItineraryModal/ItineraryModal';
 import { ModalProvider } from '@/context/ModalContext';
 import '@/styles/index.scss';
 
@@ -12,6 +13,7 @@ const HomePage         = lazy(() => import('@/pages/HomePage'));
 const AboutPage        = lazy(() => import('@/pages/AboutPage'));
 const DestinationsPage = lazy(() => import('@/pages/DestinationsPage'));
 const StoriesPage      = lazy(() => import('@/pages/StoriesPage'));
+const BlogDetailPage   = lazy(() => import('@/pages/BlogDetailPage'));
 const PrivacyPage      = lazy(() => import('@/pages/PrivacyPage'));
 const TermsPage        = lazy(() => import('@/pages/TermsPage'));
 
@@ -49,6 +51,8 @@ const AnimatedRoutes: React.FC = () => {
           <Route path="/about"        element={<AboutPage />} />
           <Route path="/destinations" element={<DestinationsPage />} />
           <Route path="/stories"      element={<StoriesPage />} />
+          <Route path="/blogs"        element={<StoriesPage />} />
+          <Route path="/blogs/:id"    element={<BlogDetailPage />} />
           <Route path="/privacy"      element={<PrivacyPage />} />
           <Route path="/terms"        element={<TermsPage />} />
         </Routes>
@@ -86,6 +90,7 @@ const App: React.FC = () => {
         {/* Global overlays */}
         <EnquiryForm />
         <WhatsAppWidget />
+        <ItineraryModal />
       </ModalProvider>
     </BrowserRouter>
   );

@@ -1,4 +1,3 @@
-
 .subpagePad {
   // Page container styles
 }
@@ -384,5 +383,35 @@
     border: 1px solid var(--black);
     width: 100%;
     padding: 14px;
+  }
+}
+
+.nlSuccess {
+  font-size: 16px;
+  font-weight: 500;
+  color: #8c6b41; // Deep golden-brown readable on light background
+  margin: 20px auto 0;
+  letter-spacing: 0.02em;
+  max-width: 440px;
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+.nlError {
+  font-size: 13px;
+  font-weight: 500;
+  color: #c9302c; // Premium deep red readable on light background
+  margin-top: 14px;
+  letter-spacing: 0.01em;
+  animation: fadeIn 0.4s ease-out forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }

@@ -2,12 +2,12 @@ import React, { useEffect } from 'react';
 import Hero from '@/components/home/Hero/Hero';
 import Intro from '@/components/home/Intro/Intro';
 import Marquee from '@/components/ui/Marquee/Marquee';
+import HomeStats from '@/components/home/HomeStats/HomeStats';
 import LogoMap from '@/components/home/LogoMap/LogoMap';
 import Itineraries from '@/components/home/Itineraries/Itineraries';
 import Experience from '@/components/home/Experience/Experience';
 import Testimonials from '@/components/home/Testimonials/Testimonials';
 import CtaSection from '@/components/home/CtaSection/CtaSection';
-import ItineraryModal from '@/components/home/ItineraryModal/ItineraryModal';
 import PageMeta from '@/components/ui/PageMeta/PageMeta';
 import { useLocation } from 'react-router-dom';
 
@@ -48,13 +48,13 @@ const HomePage: React.FC = () => {
       />
       <Hero />
       <Marquee items={marqueeItems} />
+      <HomeStats />
       <Intro />
       <LogoMap />
       <Itineraries />
       <Experience />
       <Testimonials />
       <CtaSection />
-      <ItineraryModal />
     </>
   );
 };

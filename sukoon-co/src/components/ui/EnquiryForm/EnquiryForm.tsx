@@ -30,11 +30,11 @@ const matchDestination = (input: string): string => {
   const val = input.toLowerCase().trim();
   
   if (val.includes('rajasthan') || val.includes('heartland')) return 'Rajasthan — Forts & Palaces';
-  if (val.includes('ladakh') || val.includes('peaks')) return 'Ladakh — High Altitude Desert';
+  if (val.includes('ladakh') || val.includes('peaks') || val.includes('zanskar')) return 'Ladakh — High Altitude Desert';
   if (val.includes('kashmir')) return 'Kashmir — Valley & Dal Lake';
   if (val.includes('kerala') || val.includes('backwaters')) return 'Kerala — Backwaters & Hills';
   if (val.includes('goa') || val.includes('coast')) return 'Goa — Coast & Culture';
-  if (val.includes('spiti') || val.includes('himachal') || val.includes('zanskar') || val.includes('frozen') || val.includes('valley to valley')) return 'Spiti Valley — Remote Mountains';
+  if (val.includes('spiti') || val.includes('himachal') || val.includes('frozen') || val.includes('valley to valley')) return 'Spiti Valley — Remote Mountains';
   if (val.includes('varanasi') || val.includes('banaras') || val.includes('light')) return 'Varanasi — Sacred Ghats';
   if (val.includes('ranthambore') || val.includes('safari') || val.includes('mp') || val.includes('madhya pradesh') || val.includes('tiger')) return 'Ranthambore — Tiger Safari';
   if (val.includes('corbett') || val.includes('jim')) return 'Jim Corbett — Wildlife';

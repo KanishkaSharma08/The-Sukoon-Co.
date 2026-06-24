@@ -1,0 +1,32 @@
+name: Send Newsletter on New Blog Publish
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'src/content/blogs/**'
+      - 'src/data/stories.ts'
+  workflow_dispatch:
+
+jobs:
+  notify:
+    name: Notify Subscribers
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Send Campaign Emails via Brevo
+        env:
+          BREVO_API_KEY: ${{ secrets.BREVO_API_KEY }}
+          BREVO_LIST_ID: 3
+          SITE_URL: https://thesukoonco.in
+          BREVO_SENDER_EMAIL: team@sukoonco.com
+          BREVO_SENDER_NAME: The Sukoon Co.
+        run: node scripts/notify-subscribers.js

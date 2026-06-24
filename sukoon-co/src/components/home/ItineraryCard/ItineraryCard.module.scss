@@ -17,7 +17,7 @@
   filter: brightness(0.75);
   transition: filter 0.5s, transform 0.7s;
 
-  @media (max-width: $bp-mobile) {
+  @media (max-width: 900px) {
     height: 300px;
   }
 }
@@ -55,6 +55,13 @@
   color: rgba(255, 255, 255, 0.6);
   display: flex;
   gap: 16px;
+}
+
+.priceMeta {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--gold);
+  margin-top: 6px;
 }
 
 .btn {

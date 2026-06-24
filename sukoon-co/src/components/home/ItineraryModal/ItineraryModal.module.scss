@@ -89,6 +89,14 @@
   margin-bottom: 28px;
 }
 
+.price {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--gold);
+  margin-top: -16px;
+  margin-bottom: 28px;
+}
+
 .stats {
   display: grid;
   grid-template-columns: repeat(4, 1fr);

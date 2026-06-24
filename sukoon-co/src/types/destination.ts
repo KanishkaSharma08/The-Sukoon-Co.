@@ -9,6 +9,7 @@ export interface DestCard {
   size: CardSize;
   status: CardStatus;
   itineraryId?: string;
+  priceString?: string;
 }
 
 export interface SoonChip {

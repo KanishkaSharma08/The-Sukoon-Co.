@@ -9,7 +9,7 @@ const Footer: React.FC = () => {
   return (
     <footer className={styles.footer}>
       <div>
-        <div className={styles.brand}>The Sukoon Co</div>
+        <div className={styles.brand}>The Sukoon Co.</div>
         <p className={styles.tag}>
           Boutique customised travel across India. No fixed departures. Only yours.
         </p>
@@ -31,14 +31,14 @@ const Footer: React.FC = () => {
 
       {/* Center logo matching header */}
       <div className={styles.center}>
-        <Link to="/" className={styles.logo}>The Sukoon Co</Link>
+        <Link to="/" className={styles.logo}>The Sukoon Co.</Link>
       </div>
 
       <div className={styles.links}>
         <Link to="/destinations">Destinations</Link>
         <Link to="/#itineraries">Itineraries</Link>
         <Link to="/about">About</Link>
-        <Link to="/stories">Stories</Link>
+        <Link to="/blogs">Blogs</Link>
         <button className={styles.enquiryLink} onClick={() => openEnquiry()}>
           Plan a Journey
         </button>

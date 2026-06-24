@@ -25,8 +25,8 @@
   pointer-events: none;
   line-height: 1;
 
-  @media (max-width: $bp-mobile) {
-    top: 30%;
+  @media (max-width: 900px) {
+    top: 28%;
   }
 }
 
@@ -36,7 +36,7 @@
   font-size: 26vw;
   font-weight: 800;
   letter-spacing: -0.04em;
-  color: rgba(255, 255, 255, 0.06);
+  color: rgba(255, 255, 255, 0.12);
   animation: ctaScroll 40s linear infinite;
   will-change: transform;
 }
@@ -85,57 +85,57 @@
   color: rgba(255, 255, 255, 0.35);
 }
 
-.contactButtons {
+.contactLinks {
   display: flex;
+  align-items: center;
+  justify-content: center;
   gap: 16px;
   flex-wrap: wrap;
-  justify-content: center;
 
   @media (max-width: 480px) {
     flex-direction: column;
-    width: 100%;
-    align-items: stretch;
-    gap: 10px;
+    gap: 12px;
   }
 }
 
-.phoneBtn {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  padding: 12px 20px;
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 2px;
-  text-decoration: none;
-  transition: all 0.25s ease;
-
-  &:hover {
-    background: rgba(255, 255, 255, 0.06);
-    border-color: rgba(196, 168, 130, 0.4);
-    transform: translateY(-2px);
-  }
+.contactDivider {
+  color: rgba(255, 255, 255, 0.2);
 
   @media (max-width: 480px) {
-    justify-content: space-between;
+    display: none;
   }
 }
 
-.phoneNum {
-  font-family: var(--font);
+.phoneLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.65);
   font-size: 13px;
   font-weight: 400;
-  color: rgba(255, 255, 255, 0.8);
-  letter-spacing: 0.04em;
+  letter-spacing: 0.02em;
+  transition: color 0.2s;
+
+  &:hover {
+    color: var(--white);
+  }
+}
+
+.phoneIcon {
+  opacity: 0.6;
+  transition: opacity 0.2s;
+
+  .phoneLink:hover & {
+    opacity: 1;
+  }
 }
 
 .phoneTag {
   font-size: 9px;
-  font-weight: 600;
-  letter-spacing: 0.1em;
+  font-weight: 500;
+  letter-spacing: 0.05em;
   text-transform: uppercase;
   color: var(--gold);
-  background: rgba(196, 168, 130, 0.1);
-  padding: 3px 8px;
-  border-radius: 2px;
+  opacity: 0.8;
 }

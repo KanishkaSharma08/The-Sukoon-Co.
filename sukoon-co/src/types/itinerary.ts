@@ -22,4 +22,5 @@ export interface Itinerary {
   stats: ItineraryStat[];
   days: DayEntry[];
   notes: string;
+  priceString?: string;
 }

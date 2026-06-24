@@ -11,14 +11,21 @@ const Itineraries: React.FC = () => {
     document.getElementById('cta')?.scrollIntoView({ behavior: 'smooth' });
   };
 
-  // Filter to show exactly the 5 specific itineraries in order
-  const HOME_ITI_IDS = ['ladakh', 'zanskar', 'himachal', 'kashmir', 'tirupati'];
+  // Filter to show exactly the 6 specific itineraries in order
+  const HOME_ITI_IDS = [
+    'ladakh-essential',
+    'complete-ladakh',
+    'changthang',
+    'zanskar-escape',
+    'zanskar-deep',
+    'himalayan-traverse',
+  ];
   const homeItineraries = HOME_ITI_IDS.map(id => {
     const found = itineraries.find(iti => iti.id === id);
     if (found) {
       return {
         ...found,
-        isWide: id === 'ladakh', // Make Ladakh wide to span the top row beautifully
+        isWide: false, // Clean 2-column uniform grid matching sukoon-latest.html
       };
     }
     return null;
@@ -44,7 +51,7 @@ const Itineraries: React.FC = () => {
 
       <RevealWrapper delay={2} className={styles.viewAllContainer}>
         <Link to="/destinations" className={styles.viewAllBtn}>
-          Explore All Customised Journeys &amp; Regions →
+          View All Destinations →
         </Link>
       </RevealWrapper>
     </section>

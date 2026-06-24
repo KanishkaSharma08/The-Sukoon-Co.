@@ -41,3 +41,22 @@ export const stories: Story[] = [
     imgSrc: 'https://images.unsplash.com/photo-1561361058-c24e01f69f84?w=600&q=80',
   },
 ];
+
+// Eagerly load all markdown content files at build time
+const blogModules = import.meta.glob<{ default: string }>('../content/blogs/*.md', {
+  query: '?raw',
+  eager: true,
+});
+
+export const getBlogContent = (id: string): string => {
+  // Vite's eager glob keys match the relative path pattern passed to glob
+  const key = `../content/blogs/${id}.md`;
+  const module = blogModules[key];
+  if (module && typeof module === 'object' && 'default' in module) {
+    return module.default;
+  }
+  if (module && typeof module === 'string') {
+    return module;
+  }
+  return '';
+};

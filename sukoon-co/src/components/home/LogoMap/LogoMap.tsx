@@ -82,10 +82,10 @@ const panels: PanelData[] = [
     icon: <MountainIcon />,
     title: 'The Mountains',
     tags: [
-      { label: 'Ladakh', status: 'live', itineraryId: 'ladakh' },
-      { label: 'Zanskar', status: 'live', itineraryId: 'zanskar' },
-      { label: 'Spiti & Himachal', status: 'live', itineraryId: 'himachal' },
-      { label: 'Uttarakhand', status: 'live', itineraryId: 'ladakh' },
+      { label: 'Ladakh', status: 'live', itineraryId: 'ladakh-essential' },
+      { label: 'Zanskar', status: 'live', itineraryId: 'zanskar-escape' },
+      { label: 'Spiti & Himachal', status: 'live', itineraryId: 'spiti-express' },
+      { label: 'Uttarakhand', status: 'live' },
     ],
   },
   {
@@ -152,7 +152,7 @@ const panels: PanelData[] = [
     icon: <KeralaIcon />,
     title: 'Temple Country',
     tags: [
-      { label: 'Tirupati', status: 'live', itineraryId: 'tirupati' },
+      { label: 'Tirupati', status: 'live' },
       { label: 'Tamil Nadu', status: 'soon' },
       { label: 'Karnataka', status: 'soon' },
       { label: 'Kerala', status: 'soon' },
@@ -194,8 +194,17 @@ const LogoMap: React.FC = () => {
   };
 
   const handleTagClick = (tag: DestTag) => {
-    if (tag.status === 'live' && tag.itineraryId) {
-      goTo(tag.itineraryId);
+    if (tag.status === 'live') {
+      if (tag.label.includes('Himachal') || tag.label.includes('Spiti')) {
+        navigate('/destinations#dest-himachal');
+      } else if (tag.label.includes('Ladakh') || tag.label.includes('Zanskar')) {
+        navigate('/destinations#dest-ladakh');
+      } else if (tag.itineraryId) {
+        goTo(tag.itineraryId);
+      } else {
+        // Fallback for live tags without explicit itineraries yet
+        navigate('/destinations#dest-soon');
+      }
     }
   };
 
@@ -203,7 +212,11 @@ const LogoMap: React.FC = () => {
     if (isMobile) {
       setActiveZone(prev => prev === zone ? null : zone);
     } else {
-      goTo(defaultItineraryId);
+      if (zone === 'mountains') {
+        navigate('/destinations#dest-ladakh');
+      } else {
+        navigate('/destinations#dest-soon');
+      }
     }
   };
 

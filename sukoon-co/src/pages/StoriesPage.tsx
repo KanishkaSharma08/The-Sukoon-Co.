@@ -1,4 +1,5 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import PageHero from '@/components/ui/PageHero/PageHero';
 import RevealWrapper from '@/components/ui/RevealWrapper/RevealWrapper';
 import { featuredStory, stories } from '@/data/stories';
@@ -6,20 +7,56 @@ import PageMeta from '@/components/ui/PageMeta/PageMeta';
 import styles from './StoriesPage.module.scss';
 
 const StoriesPage: React.FC = () => {
+  const [email, setEmail] = useState('');
+  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+  const [message, setMessage] = useState('');
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
+  const handleSubscribe = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!email) return;
+
+    setStatus('loading');
+    setMessage('');
+
+    try {
+      const response = await fetch('/api/subscribe', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        setStatus('success');
+        setEmail('');
+      } else {
+        setStatus('error');
+        setMessage(data.error || 'Failed to subscribe. Please try again.');
+      }
+    } catch (err) {
+      console.error('Subscription error:', err);
+      setStatus('error');
+      setMessage('Network error. Please check your connection and try again.');
+    }
+  };
+
   return (
     <div className={styles.subpagePad}>
       <PageMeta
-        title="Field Notes — The Sukoon Co"
+        title="Field Notes — The Sukoon Co."
         description="Honest dispatches from the road. Stories about travelling slow, travelling right, and coming back quieter. Read about India’s extraordinary places from people who live there."
-        canonical="/stories"
+        canonical="/blogs"
       />
       {/* PAGE HERO */}
       <PageHero
-        index="03 / Stories"
+        index="03 / Blogs"
         label="From The Road"
         title={
           <>
@@ -34,10 +71,8 @@ const StoriesPage: React.FC = () => {
       {/* FEATURED */}
       <section className={styles.featured} id="featured">
         <RevealWrapper
-          as="a"
-          role="button"
-          tabIndex={0}
-          onClick={(e) => e.preventDefault()}
+          as={Link}
+          to={`/blogs/${featuredStory.id}`}
           className={styles.featuredLink}
         >
           <div className={styles.featuredImg}>
@@ -77,11 +112,9 @@ const StoriesPage: React.FC = () => {
         <div className={styles.storyGrid}>
           {stories.map((story, i) => (
             <RevealWrapper
-              as="a"
+              as={Link}
               key={story.id}
-              role="button"
-              tabIndex={0}
-              onClick={(e) => e.preventDefault()}
+              to={`/blogs/${story.id}`}
               className={styles.storyRow}
               delay={i > 0 ? (i as 1 | 2 | 3 | 4) : undefined}
             >
@@ -114,23 +147,29 @@ const StoriesPage: React.FC = () => {
           when there's something worth saying.
         </RevealWrapper>
         <RevealWrapper delay={2}>
-          <form
-            className={styles.nlForm}
-            onSubmit={(e) => {
-              e.preventDefault();
-              alert('Thanks — we will be in touch.');
-            }}
-          >
-            <input
-              type="email"
-              className={styles.nlInput}
-              placeholder="Your email address"
-              required
-            />
-            <button type="submit" className={styles.nlBtn}>
-              Subscribe
-            </button>
-          </form>
+          {status === 'success' ? (
+            <div className={styles.nlSuccess}>
+              Thank you! You have been subscribed to our Field Notes newsletter.
+            </div>
+          ) : (
+            <>
+              <form className={styles.nlForm} onSubmit={handleSubscribe}>
+                <input
+                  type="email"
+                  className={styles.nlInput}
+                  placeholder="Your email address"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  disabled={status === 'loading'}
+                  required
+                />
+                <button type="submit" className={styles.nlBtn} disabled={status === 'loading'}>
+                  {status === 'loading' ? 'Subscribing...' : 'Subscribe'}
+                </button>
+              </form>
+              {status === 'error' && <div className={styles.nlError}>{message}</div>}
+            </>
+          )}
         </RevealWrapper>
       </section>
     </div>

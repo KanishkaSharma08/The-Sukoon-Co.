@@ -4,7 +4,8 @@ interface RevealWrapperProps extends React.HTMLAttributes<HTMLElement> {
   children: React.ReactNode;
   className?: string;
   delay?: 1 | 2 | 3 | 4;
-  as?: keyof React.JSX.IntrinsicElements;
+  as?: React.ElementType;
+  [key: string]: any;
 }
 
 const RevealWrapper: React.FC<RevealWrapperProps> = ({

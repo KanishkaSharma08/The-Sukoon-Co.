@@ -9,7 +9,7 @@ interface Props {
 }
 
 const RegionSection: React.FC<Props> = ({ region }) => (
-  <section className={`${styles.regionSection} ${region.id === 'phase3' ? 'border-bottom-none' : ''}`} id={region.id}>
+  <section className={`${styles.regionSection} ${region.id === 'dest-soon' ? 'border-bottom-none' : ''}`} id={region.id}>
     <RevealWrapper className={styles.regionHeader}>
       <div className={styles.regionHeaderLeft}>
         <span className={styles.regionNum}>{region.num}</span>
@@ -32,16 +32,23 @@ const RegionSection: React.FC<Props> = ({ region }) => (
     )}
 
     {region.soonChips.length > 0 && (
-      <div className={styles.soonStrip}>
-        {region.soonChips.map((chip) => (
-          <div key={chip.id} className={styles.soonChip}>
-            <img src={chip.imgSrc} alt={chip.name} loading="lazy" />
-            <div className={styles.soonChipOverlay}>
-              <div className={styles.soonChipName}>{chip.name}</div>
-              <div className={styles.soonChipTag}>{chip.tag}</div>
+      <div className={styles.soonGrid}>
+        {region.soonChips.map((chip, idx) => (
+          <RevealWrapper
+            key={chip.id}
+            className={styles.soonCard}
+            as="div"
+            delay={idx % 4 > 0 ? (idx % 4 as 1 | 2 | 3) : undefined}
+          >
+            <div className={styles.soonCardImg}>
+              <img src={chip.imgSrc} alt={chip.name} loading="lazy" />
             </div>
-            <span className={styles.soonChipLabel}>Soon</span>
-          </div>
+            <div className={styles.soonCardBody}>
+              <span className={styles.soonPill}>Soon</span>
+              <div className={styles.soonName}>{chip.name}</div>
+              <div className={styles.soonRoutes}>{chip.tag}</div>
+            </div>
+          </RevealWrapper>
         ))}
       </div>
     )}

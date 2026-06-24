@@ -30,13 +30,18 @@ const ItineraryCard: React.FC<ItineraryCardProps> = ({ itinerary, delay }) => {
         <span className={styles.region}>{itinerary.region}</span>
         <div className={styles.name}>{itinerary.name}</div>
         <div className={styles.meta}>
+          <span>{itinerary.duration}</span>
+          <span style={{ margin: '0 4px', opacity: 0.5 }}>·</span>
           <span>{itinerary.cardRoute || itinerary.route}</span>
         </div>
+        {itinerary.priceString && (
+          <div className={styles.priceMeta}>{itinerary.priceString}</div>
+        )}
         <button
           className={styles.btn}
           onClick={(e) => { e.stopPropagation(); openModal(itinerary.id); }}
         >
-          View Itinerary →
+          Enquire →
         </button>
       </div>
     </RevealWrapper>
